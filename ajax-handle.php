@@ -24,9 +24,10 @@ function fetch_products(){
     
         $query_args = array(
             'post_type' => 'product',
+            'posts_per_page' => -1,
         );
 
-        if (!empty($categories)) {
+        if (!empty($sanitized_categories)) {
             $query_args['tax_query'] = array(
                 array(
                     'taxonomy' => 'product_cat',
