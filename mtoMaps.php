@@ -77,13 +77,14 @@ function enqueue_custom_mtoMaps_assets(){
     }
 }
 
-$ajax_nonce = wp_create_nonce('my_ajax_nonce');
 
 function enqueue_ajax_query(){
     if (is_page() && has_shortcode(get_post()->post_content, 'leaflet_map') && has_shortcode(get_post()->post_content, 'product_categories_listing')){
         $js_dir = plugin_dir_url(__FILE__) . "includes";
         $ajax_query_dir = $js_dir . "/ajax-product-query.js";
         wp_enqueue_script('ajax_query_js', $ajax_query_dir , Array(), null, null);
+
+        $ajax_nonce = wp_create_nonce('my_ajax_nonce');
 
         wp_localize_script( 'ajax_query_js', 'myAjax', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
