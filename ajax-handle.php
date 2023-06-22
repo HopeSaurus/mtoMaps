@@ -4,69 +4,65 @@ add_action('wp_ajax_fetch_products', 'fetch_products');
 add_action('wp_ajax_nopriv_fetch_products', 'fetch_products');
 
 function fetch_products(){
-    if (array_key_exists('categories', $_POST)) {
 
-        $nonce = $_POST['nonce'];
-        
-        if (!wp_verify_nonce($nonce, 'my_ajax_nonce')) {
-            wp_send_json_error('Invalid nonce.');
-        }
-        
-        $categories = $_POST['categories'];
-
-        $sanitized_categories = array();
-        foreach ($categories as $category) {
-            $sanitized_category = sanitize_text_field($category);
-            if(term_exists($sanitized_category)){
-                $sanitized_categories[] = $sanitized_category;
-            }else{
-                wp_send_json_error('FUCK YOU');
-            }
-        }
+    $nonce = $_POST['nonce'];
     
-        $query_args = array(
-            'post_type' => 'product',
-            'posts_per_page' => -1,
-        );
-
-        if (!empty($sanitized_categories)) {
-            $query_args['tax_query'] = array(
-                array(
-                    'taxonomy' => 'product_cat',
-                    'field' => 'slug',
-                    'terms' => $sanitized_categories,
-                    'operator' => 'IN',
-                ),
-            );
-        }
-
-        $query = new WP_Query($query_args);
-
-        // Prepare the product data to send back in the Ajax response
-        $products = array();
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                $query->the_post();
-                $product_id = get_the_ID();
-                $thumbnail_id = get_post_thumbnail_id($product_id);
-                // Retrieve and store relevant product data
-                $product_data = array(
-                    'title' => get_the_title(),
-                    'link' => get_the_permalink(),
-                    'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
-                    'latitude' => get_post_meta($product_id, 'latitud', true),
-                    'longitude' => get_post_meta($product_id, 'longitud', true)
-                );
-                $products[] = $product_data;
-            }
-            wp_reset_postdata();
-        }
-
-        // Return the product data as a JSON response
-        wp_send_json_success($products);
-    } else {
-        wp_send_json_error('Invalid request');
+    if (!wp_verify_nonce($nonce, 'my_ajax_nonce')) {
+        wp_send_json_error('Invalid nonce.');
     }
+    
+    $categories = $_POST['categories'];
+
+    $sanitized_categories = array();
+    foreach ($categories as $category) {
+        $sanitized_category = sanitize_text_field($category);
+        if(term_exists($sanitized_category)){
+            $sanitized_categories[] = $sanitized_category;
+        }else{
+            wp_send_json_error('FUCK YOU');
+        }
+    }
+
+    $query_args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+    );
+
+    if (!empty($sanitized_categories)) {
+        $query_args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => $sanitized_categories,
+                'operator' => 'IN',
+            ),
+        );
+    }
+
+    $query = new WP_Query($query_args);
+
+    // Prepare the product data to send back in the Ajax response
+    $products = array();
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $product_id = get_the_ID();
+            $thumbnail_id = get_post_thumbnail_id($product_id);
+            // Retrieve and store relevant product data
+            $product_data = array(
+                'title' => get_the_title(),
+                'link' => get_the_permalink(),
+                'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
+                'latitude' => get_post_meta($product_id, 'latitud', true),
+                'longitude' => get_post_meta($product_id, 'longitud', true)
+            );
+            $products[] = $product_data;
+        }
+        wp_reset_postdata();
+    }
+
+    // Return the product data as a JSON response
+    wp_send_json_success($products);
     die();
 }
 
