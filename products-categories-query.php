@@ -12,7 +12,7 @@ function display_product_category_checkboxes() {
         echo '<h4 class="categories-list__title">Filtrar por:</h4>';
         echo '<ul class="categories-list">';
         foreach ($categories as $category) {
-            echo '<li><label><input type="checkbox" name="product_category" value="' . $category->slug . '" data-category-name="' . esc_attr($category->name) . '"> ' . $category->name . '</label></li>';
+            echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $category->slug . '"> ' . $category->name . '</label></li>';
         }
         echo '</ul>';
     } else {
