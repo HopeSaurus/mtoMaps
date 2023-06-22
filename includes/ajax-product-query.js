@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
                     let categoriesToRemove;
                     let mapBounds;
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
-                    let decision = categoriesDisplayedOnMap - selectedCategories.length;
+                    let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
                     //If theres more categories selected than displaying search for the ones that are missing 
                     if( decision < 0 ){
 
