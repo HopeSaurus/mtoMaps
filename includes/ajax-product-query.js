@@ -32,9 +32,7 @@ jQuery(document).ready(function($) {
                     console.log("Query succesful", response);
 
                     for(const category in response.data){
-                        category.forEach(function(product){
-                            console.log(product.ID);
-                        });
+                        console.log(category);
                     }
                 }
                 else{
