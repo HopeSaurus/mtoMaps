@@ -9,11 +9,13 @@ jQuery(document).ready(function($) {
             method: 'POST',
             data: {
                 action: 'fetch_products',
-                categories: selectedCategories
+                categories: selectedCategories,
+                nonce: myAjax.nonce
             },
             success: function(response) {
                 // Handle the response and update the products display
                 // Example: Update a specific element with the retrieved products
+                console.log("Query succesful", response);
             },
             error: function(xhr,status,error) {
                 console.log('Error occurred during Ajax request.');
