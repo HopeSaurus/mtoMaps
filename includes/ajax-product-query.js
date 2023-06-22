@@ -120,7 +120,7 @@ jQuery(document).ready(function($) {
 
 
                     console.log("This is the cluster object", markerCategoryGroups);
-                    /* mapBounds = L.latLngBounds();
+                    mapBounds = L.latLngBounds();
 
                     for(cluster in markerCategoryGroups){
                         mapBounds.extend(markerCategoryGroups[cluster].getBounds());
@@ -128,7 +128,7 @@ jQuery(document).ready(function($) {
 
                     map.flyToBounds(mapBounds, {
                         duration: 1,
-                      }); */
+                      });
                 }
                 else{
                     console.log("No selected categories", response);
