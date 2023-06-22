@@ -12,11 +12,8 @@ jQuery(document).ready(function($) {
                 categories: selectedCategories,
                 nonce: myAjax.nonce
             },
-            success: function(response) {
-                // Handle the response and update the products display
-                // Example: Update a specific element with the retrieved products
-                console.log("Query succesful", response);
-            },
+            success: refresh_map,
+
             error: function(xhr,status,error) {
                 console.log('Error occurred during Ajax request.');
             }
@@ -47,3 +44,7 @@ jQuery(document).ready(function($) {
     // On page load, call the Ajax function to retrieve all products by default
     getProductsByCategories();
 });
+
+function refresh_map(response){
+    console.log("Query succesful", response);
+}
