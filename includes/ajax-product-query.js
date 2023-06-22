@@ -30,10 +30,15 @@ jQuery(document).ready(function($) {
                 
                 if(response.success){
                     console.log("Query succesful", response);
+
+                    response.data.forEach(function(obj){
+                        console.log(obj);
+                    });
                 }
                 else{
                     console.log("No selected categories", response);
                 }
+
             },
             error: function(xhr,status,error) {
                 console.log('Error occurred during Ajax request.');
