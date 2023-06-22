@@ -44,6 +44,8 @@ jQuery(document).ready(function($) {
 
                         });
                     
+                        console.log("These are the categories to display", categoriesToDisplay);
+
                         categoriesToDisplay.forEach(function(category){
 
                             console.log(category);
@@ -54,6 +56,8 @@ jQuery(document).ready(function($) {
                             });
     
                             const products = response.data[category];
+
+                            console.log("These are the products array", products);
     
                             products.forEach(function(product){
     
@@ -104,7 +108,7 @@ jQuery(document).ready(function($) {
 
                         categoriesToRemove.forEach(function(category){
 
-                            markerCategoryGroups.category.clearLayers();
+                            markerCategoryGroups[category].clearLayers();
 
                         });
 
