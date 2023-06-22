@@ -4,7 +4,7 @@ add_action('wp_ajax_fetch_products', 'fetch_products');
 add_action('wp_ajax_nopriv_fetch_products', 'fetch_products');
 
 function fetch_products(){
-    if (isset($_POST['categories'])) {
+    if (array_key_exists('categories', $_POST)) {
 
         $nonce = $_POST['nonce'];
         
