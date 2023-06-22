@@ -51,7 +51,7 @@ function fetch_products(){
             $categories = get_the_terms($product_id, 'product_cat');
             // Retrieve and store relevant product data
             $product_data = array(
-                'ID', $product_id,
+                'ID' => $product_id,
                 'title' => get_the_title(),
                 'link' => get_the_permalink(),
                 'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),

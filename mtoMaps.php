@@ -26,7 +26,7 @@ function render_leaflet_map($atts) {
     // Generate map HTML
     ob_start();
     ?>
-    <div id="map" style=""></div>
+    <div id="map"></div>
     <div class="map-disclaimer">*Los marcadores en el mapa muestran el lugar de origen de nuestras piezas textiles. (Esta es una versión preliminar de pruebas).</div>
     <script>
         // Leaflet map initialization

@@ -1,6 +1,8 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
-    var selectedCategories = [];
+    let selectedCategories = [];
+    var mapElement = document.getElementById('map');
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
     // Function to perform the Ajax request
     function getProductsByCategories() {
@@ -16,6 +18,10 @@ jQuery(document).ready(function($) {
 
             error: function(xhr,status,error) {
                 console.log('Error occurred during Ajax request.');
+                mapElement.removeAttribute('disabled');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.removeAttribute('disabled');
+                })
             }
         });
     }
@@ -42,14 +48,30 @@ jQuery(document).ready(function($) {
     $('input[type="checkbox"]').on('change', handleCheckboxClick);
 
     // On page load, call the Ajax function to retrieve all products by default
+    disableElements(mapElement, checkboxes);
     getProductsByCategories();
 });
 
 function refresh_map(response){
+
+    mapElement.removeAttribute('disabled');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.removeAttribute('disabled');
+    })
+    
     if(response.success){
         console.log("Query succesful", response);
     }
     else{
         console.log("No selected categories", response);
     }
+}
+
+function disableElements(){
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.setAttribute('disabled', 'disabled');
+    });
+
+    mapElement.setAttribute('disabled', 'disabled');
 }
