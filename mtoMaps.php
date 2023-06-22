@@ -49,10 +49,6 @@ function render_leaflet_map($atts) {
         ).addTo(map);
 
         var markerCategoryGroups = {};
-
-        let markers = L.markerClusterGroup({
-            showCoverageOnHover: false,
-        });
         let marker;
 
     </script>
