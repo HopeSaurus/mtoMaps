@@ -60,7 +60,8 @@ function fetch_products(){
             );
             foreach($categories as $category){
                 $category_slug = $category->slug;
-                $products[$category_slug][] = $product_data;
+                if(in_array($category_slug,$sanitized_categories))
+                    $products[$category_slug][] = $product_data;
             }
         }
         wp_reset_postdata();
