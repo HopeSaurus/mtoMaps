@@ -115,7 +115,7 @@ jQuery(document).ready(function($) {
                     mapBounds = L.latLngBounds();
 
                     for(cluster in markerCategoryGroups){
-                        mapBounds.extend(markerCategoryGroups.getBounds());
+                        mapBounds.extend(markerCategoryGroups[cluster].getBounds());
                     }
 
                     map.flyToBounds(mapBounds, {
