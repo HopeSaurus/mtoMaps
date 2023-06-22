@@ -89,6 +89,8 @@ jQuery(document).ready(function($) {
     
                                     categoryMarkers.addLayer(marker);
     
+                                }else{
+                                    console.log(`Ignoring product with the id: ${product.ID}`);
                                 }
                             });
                             console.log(categoryMarkers);
