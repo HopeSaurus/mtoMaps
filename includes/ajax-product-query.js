@@ -33,6 +33,7 @@ jQuery(document).ready(function($) {
 
                     for(const category in response.data){
                         console.log(category);
+                        console.log('should be accesing the products here',response.data[category]);
                     }
                 }
                 else{
