@@ -48,15 +48,20 @@ function fetch_products(){
             $query->the_post();
             $product_id = get_the_ID();
             $thumbnail_id = get_post_thumbnail_id($product_id);
+            $categories = get_the_terms($product_id, 'product_cat');
             // Retrieve and store relevant product data
             $product_data = array(
+                'ID', $product_id,
                 'title' => get_the_title(),
                 'link' => get_the_permalink(),
                 'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
                 'latitude' => get_post_meta($product_id, 'latitud', true),
                 'longitude' => get_post_meta($product_id, 'longitud', true)
             );
-            $products[] = $product_data;
+            foreach($categories as $category){
+                $category_slug = $category->slug;
+                $products[$category_slug][] = $product_data;
+            }
         }
         wp_reset_postdata();
     }
