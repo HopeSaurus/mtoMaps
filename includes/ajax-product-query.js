@@ -31,9 +31,9 @@ jQuery(document).ready(function($) {
                 if(response.success){
                     console.log("Query succesful", response);
 
-                    response.data.forEach(function(obj){
-                        console.log(obj);
-                    });
+                    for(const category in response.data){
+                        console.log(`${category}: ${response.data[category]}`)
+                    }
                 }
                 else{
                     console.log("No selected categories", response);
