@@ -112,6 +112,8 @@ jQuery(document).ready(function($) {
                         console.log("You shouldnt be here");
                     }
 
+
+                    console.log("This is the cluster object", markerCategoryGroups);
                     mapBounds = L.latLngBounds();
 
                     for(cluster in markerCategoryGroups){
