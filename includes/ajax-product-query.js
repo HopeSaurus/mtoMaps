@@ -46,5 +46,10 @@ jQuery(document).ready(function($) {
 });
 
 function refresh_map(response){
-    console.log("Query succesful", response);
+    if(response.success){
+        console.log("Query succesful", response);
+    }
+    else{
+        console.log("No selected categories");
+    }
 }

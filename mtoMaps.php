@@ -15,7 +15,6 @@ if ( !defined('ABSPATH'))
 }
 
 require_once plugin_dir_path(__FILE__) . 'products-categories-query.php';
-//require_once plugin_dir_path(__FILE__) . 'refresh_map.php';
 require_once plugin_dir_path(__FILE__) . 'ajax-handle.php';
 
 function render_leaflet_map($atts) {
