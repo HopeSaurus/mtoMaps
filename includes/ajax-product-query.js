@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
             // Get the category name from the data-category-name attribute
-            var categoryName = $(this).data('category-name');
+            var categoryName = $(this).data('value');
             // Push the category name to the selectedCategories array
             selectedCategories.push(categoryName);
             console.log(selectedCategories);
