@@ -61,12 +61,12 @@ jQuery(document).ready(function($) {
     
                             products.forEach(function(product){
     
-                                let latitud = product.latitud;
-                                let longitud = product.longitud;
+                                let latitude = product.latitude;
+                                let longitude = product.longitude;
     
-                                if(latitud && longitud){
+                                if(latitude && longitude){
     
-                                    marker = L.marker([latitud,longitud]);
+                                    marker = L.marker([latitude,longitude]);
     
                                     marker.bindPopup(`<div class="map__popup">
                                                         <a class="map__popup-linkarea" href="${product.link}"> 
