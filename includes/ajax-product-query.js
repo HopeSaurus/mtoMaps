@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
                             });
                             console.log(categoryMarkers);
                             markerCategoryGroups[category] = categoryMarkers;
-                            map.addLayer(markerCategoryGroups.category);
+                            map.addLayer(markerCategoryGroups[category]);
                         });
 
 
