@@ -50,6 +50,6 @@ function refresh_map(response){
         console.log("Query succesful", response);
     }
     else{
-        console.log("No selected categories");
+        console.log("No selected categories", response);
     }
 }

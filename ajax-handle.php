@@ -4,7 +4,7 @@ add_action('wp_ajax_fetch_products', 'fetch_products');
 add_action('wp_ajax_nopriv_fetch_products', 'fetch_products');
 
 function fetch_products(){
-    if (isset($_POST['categories']) && is_array($_POST['categories'])) {
+    if (isset($_POST['categories'])) {
 
         $nonce = $_POST['nonce'];
         
@@ -19,6 +19,8 @@ function fetch_products(){
             $sanitized_category = sanitize_text_field($category);
             if(term_exists($sanitized_category)){
                 $sanitized_categories[] = $sanitized_category;
+            }else{
+                wp_send_json_error('FUCK YOU');
             }
         }
     
