@@ -3,19 +3,16 @@
 /**
  * 
  * Plugin Name: MTO Maps
- * Description: This plugin is made to retrieve woocommerce products and its geolocation to pin it in a google maps integration
+ * Description: This plugin is made to retrieve woocommerce products and its geolocation to pin it inside a map.
  * Version: 0.6
  * Author: Ximena Bolaños Cacho
  * 
  */
 
-/* if ( !defined('ABSPATH'))
+if ( !defined('ABSPATH'))
 {
     die('Access forbidden');
 }
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 require_once plugin_dir_path(__FILE__) . 'products-categories-query.php';
 require_once plugin_dir_path(__FILE__) . 'refresh_map.php';
@@ -51,23 +48,11 @@ function render_leaflet_map($atts) {
 
         }
         ).addTo(map);
-        //calculate client viewport width
-        let viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        let offset=0;
-        if (viewportWidth <= 674) { // Adjust the breakpoint as needed
-        //set offset to latitude if the viewport is smaller than 674px
-        //Currently i adjusted the map on lower resolutions to fix the offset. But the feature can be further customize still
-            offset = 0;
-        }
+
         let markers = L.markerClusterGroup({
             showCoverageOnHover: false,
         });
         let marker;
-        
-        
-        <?php
-        //refresh_map();
-        ?>
 
     </script>
     <?php
@@ -92,6 +77,8 @@ function enqueue_custom_mtoMaps_assets(){
     }
 }
 
+$ajax_nonce = wp_create_nonce('my_ajax_nonce');
+
 function enqueue_ajax_query(){
     if (is_page() && has_shortcode(get_post()->post_content, 'leaflet_map') && has_shortcode(get_post()->post_content, 'product_categories_listing')){
         $js_dir = plugin_dir_url(__FILE__) . "includes";
@@ -99,14 +86,14 @@ function enqueue_ajax_query(){
         wp_enqueue_script('ajax_query_js', $ajax_query_dir , Array(), null, null);
 
         wp_localize_script( 'ajax_query_js', 'myAjax', array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' )
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'nonce' => $ajax_nonce
         ));
     }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_leaflet_map_assets');
 add_action('wp_enqueue_scripts', 'enqueue_custom_mtoMaps_assets');
-//add_action('wp_enqueue_scripts', 'enqueue_ajax_query');
+add_action('wp_enqueue_scripts', 'enqueue_ajax_query');
  
-*/
 ?> 

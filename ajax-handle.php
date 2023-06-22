@@ -1,9 +1,26 @@
 <?php
 
+add_action('wp_ajax_fetch_products', 'fetch_products');
+add_action('wp_ajax_nopriv_fetch_products', 'fetch_products');
+
 function fetch_products(){
     if (isset($_POST['categories']) && is_array($_POST['categories'])) {
+
+        $nonce = $_POST['nonce'];
+        
+        if (!wp_verify_nonce($nonce, 'my_ajax_nonce')) {
+            wp_send_json_error('Invalid nonce.');
+        }
         
         $categories = $_POST['categories'];
+
+        $sanitized_categories = array();
+        foreach ($categories as $category) {
+            $sanitized_category = sanitize_text_field($category);
+            if(term_exists($sanitized_category)){
+                $sanitized_categories[] = $sanitized_category;
+            }
+        }
     
         $query_args = array(
             'post_type' => 'product',
@@ -14,7 +31,7 @@ function fetch_products(){
                 array(
                     'taxonomy' => 'product_cat',
                     'field' => 'slug',
-                    'terms' => $categories,
+                    'terms' => $sanitized_categories,
                     'operator' => 'IN',
                 ),
             );
@@ -35,7 +52,7 @@ function fetch_products(){
                     'link' => get_the_permalink(),
                     'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
                     'latitude' => get_post_meta($product_id, 'latitud', true),
-                    'longitude' => $product_longitude = get_post_meta($product_id, 'longitud', true)
+                    'longitude' => get_post_meta($product_id, 'longitud', true)
                 );
                 $products[] = $product_data;
             }
@@ -49,8 +66,5 @@ function fetch_products(){
     }
     die();
 }
-
-add_action('wp_ajax_fetch_products', 'fetch_products');
-add_action('wp_ajax_nopriv_fetch_products', 'fetch_products');
 
 ?>
