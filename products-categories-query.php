@@ -9,12 +9,14 @@ function display_product_category_checkboxes() {
     $categories = get_terms($args);
 
     if (!empty($categories)) {
+        echo '<div class="categories-container">';
         echo '<h4 class="categories-list__title">Filtrar por:</h4>';
         echo '<ul class="categories-list">';
         foreach ($categories as $category) {
             echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $category->slug . '"> ' . $category->name . '</label></li>';
         }
         echo '</ul>';
+        echo '</div>';
     } else {
         echo 'No categories found.';
     }

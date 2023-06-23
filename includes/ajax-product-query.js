@@ -41,8 +41,10 @@ jQuery(document).ready(function($) {
                     let mapBounds;
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
                     let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
-                    //If theres more categories selected than displaying search for the ones that are missing 
+                    //If theres no category selected or there are no items belonging to that category return
+                    //TODO: Handle message when theres no 
                     if(decision == 0 || Object.keys(response.data) == 0) return;
+                    //If theres more categories selected than displaying search for the ones that are missing 
                     else if( decision < 0 ){
 
                         categoriesToDisplay = selectedCategories.filter(function(category){
