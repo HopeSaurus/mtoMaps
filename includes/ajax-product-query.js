@@ -132,19 +132,30 @@ jQuery(document).ready(function($) {
 
                     console.log("This is the cluster object", markerCategoryGroups);
                     
+                    if(Object.keys(markerCategoryGroups)!=0){
+                        
+                        mapBounds = L.latLngBounds();
 
-                    mapBounds = L.latLngBounds();
+                        for(cluster in markerCategoryGroups){
+                            mapBounds.extend(markerCategoryGroups[cluster].getBounds());
+                        }
 
-                    for(cluster in markerCategoryGroups){
-                        mapBounds.extend(markerCategoryGroups[cluster].getBounds());
+                        map.flyToBounds(mapBounds, {
+                            duration: 1,
+                        });
+
+                    }else if (Object.keys(markerCategoryGroups)==0){
+
+                        map.flyToBounds(bounds, {
+                            duration: 1,
+                        });
+
+                    }else{
+                        console.log("What f happened?");
                     }
-
-                    map.flyToBounds(mapBounds, {
-                        duration: 1,
-                      });
                 }
                 else{
-                    console.log("No selected categories", response);
+                    console.log("Don't try dirty things");
                 }
 
             },
