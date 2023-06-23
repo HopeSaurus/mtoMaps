@@ -1,6 +1,8 @@
 //TODO:
 //BY DEFAULT SHOULD BE SHOWING EVERY CATEGORY
 //FIX FLY TO BOUNDS WHEN DEFAULT
+//REMOVE CONSOLE LOGS
+//I SHOULD REMOVE THE KEYS ALSO
 
 jQuery(document).ready(function($) {
     // Array to store the selected categories
@@ -115,11 +117,13 @@ jQuery(document).ready(function($) {
                         categoriesToRemove.forEach(function(category){
 
                             markerCategoryGroups[category].clearLayers();
+                            delete markerCategoryGroups.category;
 
                         });
 
                     }else{
                         console.log("You shouldnt be here");
+                        return;
                     }
 
 
