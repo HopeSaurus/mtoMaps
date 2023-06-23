@@ -118,7 +118,7 @@ jQuery(document).ready(function($) {
 
                             markerCategoryGroups[category].clearLayers();
                             delete markerCategoryGroups.category;
-
+                            console.log("This should delete the unchecked categories",markerCategoryGroups);
                         });
 
                     }else{
