@@ -42,7 +42,8 @@ jQuery(document).ready(function($) {
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
                     let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
                     //If theres more categories selected than displaying search for the ones that are missing 
-                    if( decision < 0 ){
+                    if(decision == 0 ) return;
+                    else if( decision < 0 ){
 
                         categoriesToDisplay = selectedCategories.filter(function(category){
 
@@ -121,13 +122,17 @@ jQuery(document).ready(function($) {
                             console.log("This should delete the unchecked categories",markerCategoryGroups);
                         });
 
-                    }else{
-                        console.log("You shouldnt be here");
-                        return;
+                    }
+                    //This shouldnt ever happen
+                    else
+                    {
+                        console.log("No categories selected nor displaying");
                     }
 
 
                     console.log("This is the cluster object", markerCategoryGroups);
+                    
+
                     mapBounds = L.latLngBounds();
 
                     for(cluster in markerCategoryGroups){
