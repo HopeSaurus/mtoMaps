@@ -78,6 +78,9 @@ a:hover img{
 /*
     Checkbox Styling
 */
+.categories-container{
+    padding-bottom: 10px;
+}
 
 .categories-list__title{
     margin-bottom: 12px;
