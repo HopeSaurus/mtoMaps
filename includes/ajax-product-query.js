@@ -1,3 +1,7 @@
+//TODO:
+//BY DEFAULT SHOULD BE SHOWING EVERY CATEGORY
+//FIX FLY TO BOUNDS WHEN DEFAULT
+
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
@@ -80,9 +84,9 @@ jQuery(document).ready(function($) {
                                         let markerCoords = this.getLatLng();
                                         let currentZoom = map.getZoom();
                                         if(currentZoom>6){
-                                            map.flyTo([markerCoords.lat + offset,markerCoords.lng], currentZoom, { duration: 0.5 });
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
                                         }else{
-                                            map.flyTo([markerCoords.lat + offset,markerCoords.lng], 6, { duration: 0.5 });
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
                                         }
                                         this.openPopup();
                                     });
