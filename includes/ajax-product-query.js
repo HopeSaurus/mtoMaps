@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
                     let categoriesToRemove;
                     let mapBounds;
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups).length;
-                    let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
+                    let decision = categoriesDisplayedOnMap - selectedCategories.length;
                     //If theres no category selected or there are no items belonging to that category return
                     //TODO: Handle message when theres no products belonging to a category
                     if(decision == 0 ) return;
