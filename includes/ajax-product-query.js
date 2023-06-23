@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
                     let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
                     //If theres more categories selected than displaying search for the ones that are missing 
-                    if(decision == 0 ) return;
+                    if(decision == 0 || Object.keys(response.data) == 0) return;
                     else if( decision < 0 ){
 
                         categoriesToDisplay = selectedCategories.filter(function(category){
@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
                     console.log("This is the cluster object", markerCategoryGroups);
                     
                     if(Object.keys(markerCategoryGroups)!=0){
-                        
+
                         mapBounds = L.latLngBounds();
 
                         for(cluster in markerCategoryGroups){
