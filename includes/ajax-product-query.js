@@ -209,11 +209,11 @@ jQuery(document).ready(function($) {
 });
 
 function showLoading(){
-    const loadingScreen = document.getElementById('#loading-screen');
+    const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.add('show-loading');
 }
 
 function hideLoading(){
-    const loadingScreen = document.getElementById('#loading-screen');
+    const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.remove('show-loading');
 }
