@@ -149,7 +149,7 @@ ul.categories-list > li:active{
 }
 
 .hide-div{
-    display: none;
+    display: none!important;
 }
 
 .spinner {
