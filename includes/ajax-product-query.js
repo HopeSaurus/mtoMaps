@@ -13,6 +13,8 @@ jQuery(document).ready(function($) {
         var mapElement = document.getElementById('map');
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
+        showLoading();
+
         checkboxes.forEach(function (checkbox) {
             checkbox.setAttribute('disabled', 'disabled');
         });
@@ -28,6 +30,8 @@ jQuery(document).ready(function($) {
                 nonce: myAjax.nonce
             },
             success: function(response){
+
+                hideLoading();
 
                 mapElement.removeAttribute('disabled');
                 checkboxes.forEach(function (checkbox) {
@@ -204,3 +208,12 @@ jQuery(document).ready(function($) {
     getProductsByCategories();
 });
 
+function showLoading(){
+    const loadingScreen = document.getElementById('#loading-screen');
+    loadingScreen.classList.add('show-loading');
+}
+
+function hideLoading(){
+    const loadingScreen = document.getElementById('#loading-screen');
+    loadingScreen.classList.remove('show-loading');
+}
