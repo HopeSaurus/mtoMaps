@@ -2,6 +2,10 @@
     Map related styling
 */
 
+#mtoMap{
+    position: relative;
+}
+
 #map{
     height:65vh;
 }
@@ -131,7 +135,7 @@ ul.categories-list > li:active{
 */
 
 #loading-screen{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
