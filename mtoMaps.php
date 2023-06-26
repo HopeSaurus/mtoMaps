@@ -16,7 +16,6 @@ if ( !defined('ABSPATH'))
 
 require_once plugin_dir_path(__FILE__) . 'products-categories-query.php';
 require_once plugin_dir_path(__FILE__) . 'ajax-handle.php';
-$logo_URL = plugin_dir_url(__FILE__) . "/assets/logoMTO2.jpeg";
 
 function render_leaflet_map($atts) {
     // Extract shortcode attributes
@@ -31,7 +30,7 @@ function render_leaflet_map($atts) {
         <?php display_product_category_checkboxes(); ?>
         <div id="map"></div>
         <div id="loading-screen">
-            <img class="mto-logo" src = "<?php echo $logo_URL;?>" alt = "Logo"></img>
+            <img class="mto-logo" src = "<?php echo plugin_dir_url(__FILE__) . "/assets/logoMTO2.jpeg";?>" alt = "Logo"></img>
             <div class="spinner"></div>
         </div>
         <div class="map-disclaimer">*Los marcadores en el mapa muestran el lugar de origen de nuestras piezas textiles. (Esta es una versión preliminar de pruebas).</div>
