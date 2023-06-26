@@ -166,5 +166,6 @@ ul.categories-list > li:active{
   }
 
   .logo{
-    
+    height: 100px;
+    width: auto;
   }
