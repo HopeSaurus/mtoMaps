@@ -148,10 +148,11 @@ ul.categories-list > li:active{
 }
 
 .spinner {
+    position: relative;
     width: 40px;
     height: 40px;
-    border: 4px solid #ccc;
-    border-top: 4px solid #333;
+    border: 4px solid #C23B33;
+    border-top: 4px solid #a1312b;
     border-radius: 50%;
     animation: spin 1s infinite linear;
   }
@@ -166,6 +167,7 @@ ul.categories-list > li:active{
   }
 
   .mto-logo{
-    height: 100px;
-    width: 100px;
+    position: relative;
+    height: 75px;
+    width: 75px;
   }
