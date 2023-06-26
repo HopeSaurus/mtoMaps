@@ -142,18 +142,15 @@ ul.categories-list > li:active{
     width: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     z-index: 9990;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0;
 }
 
 .show-loading{
-    display: flex;
-}
-
-.loading-screen:not(.show-loading) {
-    display: none;
+    opacity: 1;
 }
 
 .spinner {
