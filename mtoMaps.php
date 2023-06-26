@@ -28,8 +28,12 @@ function render_leaflet_map($atts) {
     ?>
     <div id="mtoMap">
         <?php display_product_category_checkboxes(); ?>
-        <div id="map"></div>
-        <div id="loading-screen" class="hide-loading">
+        <div id="map">
+            <div id="map-message" class="hide-div">
+                <p class="loading-text">No se han encontrado piezas pertenecientes a esa categoría</p>
+            </div>  
+        </div>
+        <div id="loading-screen" class="hide-div">
             <div class="spinner"></div>
             <p class="loading-text">Cargando</p> 
         </div>

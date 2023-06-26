@@ -148,8 +148,8 @@ ul.categories-list > li:active{
     align-items: center;
 }
 
-.hide-loading{
-    visibility: hidden;
+.hide-div{
+    display: none;
 }
 
 .spinner {
@@ -199,4 +199,18 @@ ul.categories-list > li:active{
     75% {
       content: "...";
     }
+  }
+
+  #map-message{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9990;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }

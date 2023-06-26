@@ -1,8 +1,6 @@
 //TODO:
 //BY DEFAULT SHOULD BE SHOWING EVERY CATEGORY
-//FIX FLY TO BOUNDS WHEN DEFAULT
 //REMOVE CONSOLE LOGS
-//I SHOULD REMOVE THE KEYS ALSO
 
 jQuery(document).ready(function($) {
     // Array to store the selected categories
@@ -10,16 +8,9 @@ jQuery(document).ready(function($) {
 
     // Function to perform the Ajax request
     function getProductsByCategories() {
-        var mapElement = document.getElementById('map');
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
         showLoading();
-
-        checkboxes.forEach(function (checkbox) {
-            checkbox.setAttribute('disabled', 'disabled');
-        });
-    
-        mapElement.setAttribute('disabled', 'disabled');
+        hideNoProducts();
 
         jQuery.ajax({
             url: myAjax.ajaxurl,
@@ -52,75 +43,80 @@ jQuery(document).ready(function($) {
                     //If theres more categories selected than displaying search for the ones that are missing 
                     else if( decision < 0 ){
 
-                        categoriesToDisplay = selectedCategories.filter(function(category){
+                        //If theres a category to display but theres no products belonging to that category display a message window
+                        if( Object.keys(response.data)<=0){
+                            showNoProducts();
+                        }
+                        else{
+                            categoriesToDisplay = selectedCategories.filter(function(category){
 
-                            return !categoriesDisplayedOnMap.includes(category);
+                                return !categoriesDisplayedOnMap.includes(category);
 
-                        });
-                    
-                        console.log("These are the categories to display", categoriesToDisplay);
-
-                        categoriesToDisplay.forEach(function(category){
-
-                            console.log(category);
-                            console.log('should be accesing the products here',response.data[category]);
-    
-                            let categoryMarkers = L.markerClusterGroup({
-                                showCoverageOnHover: false,
                             });
-    
-                            const products = response.data[category];
+                        
+                            console.log("These are the categories to display", categoriesToDisplay);
 
-                            console.log("These are the products array", products);
-    
-                            products.forEach(function(product){
-    
-                                let latitude = product.latitude;
-                                let longitude = product.longitude;
-    
-                                if(latitude && longitude){
-    
-                                    marker = L.marker([latitude,longitude]);
-    
-                                    marker.bindPopup(`<div class="map__popup">
-                                                        <a class="map__popup-linkarea" href="${product.link}"> 
-                                                            <h4 class="map__popup-title">${product.title}</h4> 
-                                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img> 
-                                                        </a> 
-                                                    </div>
-                                                    `);
-    
-                                    marker.on('click', function(e) {
-                                        let markerCoords = this.getLatLng();
-                                        let currentZoom = map.getZoom();
-                                        if(currentZoom>6){
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
-                                        }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
-                                        }
-                                        this.openPopup();
-                                    });
+                            categoriesToDisplay.forEach(function(category){
 
-                                    marker.on('popupclose', function() {
-                                        
-                                        map.flyToBounds(clusterBounds, {
-                                            duration: 1,
+                                console.log(category);
+                                console.log('should be accesing the products here',response.data[category]);
+        
+                                let categoryMarkers = L.markerClusterGroup({
+                                    showCoverageOnHover: false,
+                                });
+        
+                                const products = response.data[category];
+
+                                console.log("These are the products array", products);
+        
+                                products.forEach(function(product){
+        
+                                    let latitude = product.latitude;
+                                    let longitude = product.longitude;
+        
+                                    if(latitude && longitude){
+        
+                                        marker = L.marker([latitude,longitude]);
+        
+                                        marker.bindPopup(`<div class="map__popup">
+                                                            <a class="map__popup-linkarea" href="${product.link}"> 
+                                                                <h4 class="map__popup-title">${product.title}</h4> 
+                                                                <img src="${product.thumbnail_url}" alt="${product.title}"></img> 
+                                                            </a> 
+                                                        </div>
+                                                        `);
+        
+                                        marker.on('click', function(e) {
+                                            let markerCoords = this.getLatLng();
+                                            let currentZoom = map.getZoom();
+                                            if(currentZoom>6){
+                                                map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
+                                            }else{
+                                                map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
+                                            }
+                                            this.openPopup();
                                         });
-                                        
-                                    });
-    
-                                    categoryMarkers.addLayer(marker);
-    
-                                }else{
-                                    console.log(`Ignoring product with the id: ${product.ID}`);
-                                }
+
+                                        marker.on('popupclose', function() {
+                                            
+                                            map.flyToBounds(clusterBounds, {
+                                                duration: 1,
+                                            });
+                                            
+                                        });
+        
+                                        categoryMarkers.addLayer(marker);
+                                    
+        
+                                    }else{
+                                        console.log(`Ignoring product with the id: ${product.ID}`);
+                                    }
+                                });
+                                console.log(categoryMarkers);
+                                markerCategoryGroups[category] = categoryMarkers;
+                                map.addLayer(markerCategoryGroups[category]);
                             });
-                            console.log(categoryMarkers);
-                            markerCategoryGroups[category] = categoryMarkers;
-                            map.addLayer(markerCategoryGroups[category]);
-                        });
-
-
+                        }
                     //If theres more categories displaying that selected, search for the ones to remove
                     }else if( decision > 0){
 
@@ -210,10 +206,22 @@ jQuery(document).ready(function($) {
 
 function showLoading(){
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.remove('hide-loading');
+    loadingScreen.classList.remove('hide-div');
 }
 
 function hideLoading(){
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.add('hide-loading');
+    loadingScreen.classList.add('hide-dive');
+}
+
+function showNoProducts(){
+    const noProductsMessage = document.getElementById('map-message');
+    noProductsMessage.classList.remove('hide-div')
+}
+
+function hideNoProducts(){
+    const noProductsMessage = document.getElementById('map-message');
+    if(!noProductsMessage.classList.contains('hide-div')){
+        noProductsMessage.classList.add('hide-div')
+    }
 }
