@@ -125,3 +125,17 @@ ul.categories-list > li:hover{
 ul.categories-list > li:active{
     translate: 0 1px;
 }
+
+/*
+    Loading screen
+*/
+
+#loading-screen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9990;
+}

@@ -29,6 +29,7 @@ function render_leaflet_map($atts) {
     <div id="mtoMap">
         <?php display_product_category_checkboxes(); ?>
         <div id="map"></div>
+        <div id="loading-screen"></div>
         <div class="map-disclaimer">*Los marcadores en el mapa muestran el lugar de origen de nuestras piezas textiles. (Esta es una versión preliminar de pruebas).</div>
     </div>
     <script>
