@@ -148,7 +148,8 @@ ul.categories-list > li:active{
 }
 
 .spinner {
-    position: relative;
+    position: absolute;
+    translate: -50%, -50%;
     width: 80px;
     height: 80px;
     border: 4px solid #C23B33;
