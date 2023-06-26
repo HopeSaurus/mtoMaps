@@ -23,11 +23,6 @@ jQuery(document).ready(function($) {
             success: function(response){
 
                 hideLoading();
-
-                mapElement.removeAttribute('disabled');
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.removeAttribute('disabled');
-                })
                 
                 if(response.success){
                     console.log("Query succesful", response);
@@ -171,10 +166,8 @@ jQuery(document).ready(function($) {
             },
             error: function(xhr,status,error) {
                 console.log('Error occurred during Ajax request.');
-                mapElement.removeAttribute('disabled');
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.removeAttribute('disabled');
-                })
+                hideLoading();
+
             }
         });
     }
@@ -211,7 +204,7 @@ function showLoading(){
 
 function hideLoading(){
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.add('hide-dive');
+    loadingScreen.classList.add('hide-div');
 }
 
 function showNoProducts(){
