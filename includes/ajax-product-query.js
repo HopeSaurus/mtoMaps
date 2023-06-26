@@ -210,10 +210,10 @@ jQuery(document).ready(function($) {
 
 function showLoading(){
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.add('show-loading');
+    loadingScreen.classList.remove('hide-loading');
 }
 
 function hideLoading(){
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.remove('show-loading');
+    loadingScreen.classList.add('hide-loading');
 }
