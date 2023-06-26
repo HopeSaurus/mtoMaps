@@ -41,6 +41,8 @@ jQuery(document).ready(function($) {
                     let mapBounds;
                     let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
                     let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
+                    clusterBounds = L.latLngBounds();
+                    
                     //If theres no category selected or there are no items belonging to that category return
                     //TODO: Handle message when theres no products belonging to a category
                     if(decision == 0 ) return;
@@ -95,6 +97,14 @@ jQuery(document).ready(function($) {
                                         }
                                         this.openPopup();
                                     });
+
+                                    marker.on('popupclose', function() {
+                                        
+                                        map.flyToBounds(clusterBounds, {
+                                            duration: 1,
+                                        });
+                                        
+                                    });
     
                                     categoryMarkers.addLayer(marker);
     
@@ -136,13 +146,11 @@ jQuery(document).ready(function($) {
                     
                     if(Object.keys(markerCategoryGroups)!=0){
 
-                        mapBounds = L.latLngBounds();
-
                         for(cluster in markerCategoryGroups){
-                            mapBounds.extend(markerCategoryGroups[cluster].getBounds());
+                            clusterBounds.extend(markerCategoryGroups[cluster].getBounds());
                         }
 
-                        map.flyToBounds(mapBounds, {
+                        map.flyToBounds(clusterBounds, {
                             duration: 1,
                         });
 
@@ -158,6 +166,7 @@ jQuery(document).ready(function($) {
                 }
                 else{
                     console.log("Don't try dirty things");
+                    location.reload();
                 }
 
             },

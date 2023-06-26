@@ -4,7 +4,7 @@
  * 
  * Plugin Name: MTO Maps
  * Description: This plugin is made to retrieve woocommerce products and its geolocation to pin it inside a map.
- * Version: 0.6
+ * Version: 1.0
  * Author: Ximena Bolaños Cacho
  * 
  */
@@ -25,10 +25,12 @@ function render_leaflet_map($atts) {
 
     // Generate map HTML
     ob_start();
-    display_product_category_checkboxes();
     ?>
-    <div id="map"></div>
-    <div class="map-disclaimer">*Los marcadores en el mapa muestran el lugar de origen de nuestras piezas textiles. (Esta es una versión preliminar de pruebas).</div>
+    <div id="mtoMap">
+        <?php display_product_category_checkboxes(); ?>
+        <div id="map"></div>
+        <div class="map-disclaimer">*Los marcadores en el mapa muestran el lugar de origen de nuestras piezas textiles. (Esta es una versión preliminar de pruebas).</div>
+    </div>
     <script>
         // Leaflet map initialization
         let map = L.map('map',{
