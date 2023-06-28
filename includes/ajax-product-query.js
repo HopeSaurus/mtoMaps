@@ -94,6 +94,7 @@ jQuery(document).ready(function($) {
                             totalClusterGroup.addLayer(markerCategoryGroups[category]);
                             //map.addLayer(markerCategoryGroups[category]);
                             updateBounds();
+                            closePopUps();
                             reCenterMap();
                         });
                     }
