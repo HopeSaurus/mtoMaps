@@ -223,7 +223,7 @@ jQuery(document).ready(function($) {
     }
 
     function reCenterMap(){
-        map.flyToBounds(bounds, {
+        map.flyToBounds(clusterBounds, {
             duration: 1,
         });
     }
