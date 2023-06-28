@@ -189,6 +189,14 @@ jQuery(document).ready(function($) {
         getProductsByCategories();
     }
 
+    function cleanCheckboxes(){
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+        });
+        handleCheckboxClick();
+    }
+
     // Attach the handleCheckboxClick function to the checkbox change event
     $('input[type="checkbox"]').on('change', handleCheckboxClick);
     $('.clean-checkboxes').on('click', cleanCheckboxes);
@@ -217,12 +225,4 @@ function hideNoProducts(){
     if(!noProductsMessage.classList.contains('hide-div')){
         noProductsMessage.classList.add('hide-div')
     }
-}
-
-function cleanCheckboxes(){
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false;
-    });
-    handleCheckboxClick();
 }
