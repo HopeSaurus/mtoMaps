@@ -92,6 +92,7 @@ jQuery(document).ready(function($) {
                                 console.log(categoryMarkers);
                                 markerCategoryGroups[category] = categoryMarkers;
                                 totalClusterGroup.addLayer(markerCategoryGroups[category]);
+                                updateBounds();
                                 //map.addLayer(markerCategoryGroups[category]);
                             });
                         }
@@ -153,6 +154,7 @@ jQuery(document).ready(function($) {
         categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
 
         reCenterMap();
+
     }
 
     function cleanCheckboxes(){
@@ -201,27 +203,29 @@ jQuery(document).ready(function($) {
             delete markerCategoryGroups[category];
             console.log("This should delete the unchecked categories",markerCategoryGroups);
         });
+        updateBounds();
         hideLoading();
     }
     
-    function reCenterMap(){
+    function updateBounds(){
         if(Object.keys(markerCategoryGroups)!=0){
     
             clusterBounds = totalClusterGroup.getBounds();
     
-            map.flyToBounds(clusterBounds, {
-                duration: 1,
-            });
-    
         }else if (Object.keys(markerCategoryGroups)==0){
-    
-            map.flyToBounds(bounds, {
-                duration: 1,
-            });
-    
+            
+            clusterBounds = bounds; 
+
         }else{
             console.log("What f happened?");
         }
     }
+
+    function reCenterMap(){
+        map.flyToBounds(bounds, {
+            duration: 1,
+        });
+    }
+
 });
 
