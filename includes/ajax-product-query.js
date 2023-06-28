@@ -27,77 +27,79 @@ jQuery(document).ready(function($) {
                 if(response.success){
                     console.log("Query succesful", response);
 
-                        if( Object.keys(response.data)<=0){
-                            showNoProducts();
-                        }
-                        else{
-                            console.log("These are the categories to display", categoriesToDisplay);
+                    if( Object.keys(response.data)<=0){
+                        showNoProducts();
+                    }
+                    else{
+                        console.log("These are the categories to display", categoriesToDisplay);
 
-                            categoriesToDisplay.forEach(function(category){
+                        categoriesToDisplay.forEach(function(category){
 
-                                console.log(category);
-                                console.log('should be accesing the products here',response.data[category]);
-        
-                                let categoryMarkers = L.markerClusterGroup({
-                                    showCoverageOnHover: false,
-                                });
-        
-                                const products = response.data[category];
-
-                                console.log("These are the products array", products);
-        
-                                products.forEach(function(product){
-        
-                                    let latitude = product.latitude;
-                                    let longitude = product.longitude;
-        
-                                    if(latitude && longitude){
-        
-                                        marker = L.marker([latitude,longitude]);
-        
-                                        marker.bindPopup(`<div class="map__popup">
-                                                            <a class="map__popup-linkarea" href="${product.link}"> 
-                                                                <h4 class="map__popup-title">${product.title}</h4> 
-                                                                <img src="${product.thumbnail_url}" alt="${product.title}"></img> 
-                                                            </a> 
-                                                        </div>
-                                                        `);
-        
-                                        marker.on('click', function(e) {
-                                            let markerCoords = this.getLatLng();
-                                            let currentZoom = map.getZoom();
-                                            if(currentZoom>6){
-                                                map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
-                                            }else{
-                                                map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
-                                            }
-                                            this.openPopup();
-                                        });
-
-                                        marker.on('popupclose', function() {
-                                            
-                                            map.flyToBounds(clusterBounds, {
-                                                duration: 1,
-                                            });
-                                            
-                                        });
-        
-                                        categoryMarkers.addLayer(marker);
-                                    
-        
-                                    }else{
-                                        console.log(`Ignoring product with the id: ${product.ID}`);
-                                    }
-                                });
-                                console.log(categoryMarkers);
-                                markerCategoryGroups[category] = categoryMarkers;
-                                totalClusterGroup.addLayer(markerCategoryGroups[category]);
-                                updateBounds();
-                                //map.addLayer(markerCategoryGroups[category]);
+                            console.log(category);
+                            console.log('should be accesing the products here',response.data[category]);
+    
+                            let categoryMarkers = L.markerClusterGroup({
+                                showCoverageOnHover: false,
                             });
-                        }
+    
+                            const products = response.data[category];
 
-                    console.log("This is the cluster object", markerCategoryGroups);
+                            console.log("These are the products array", products);
+    
+                            products.forEach(function(product){
+    
+                                let latitude = product.latitude;
+                                let longitude = product.longitude;
+    
+                                if(latitude && longitude){
+    
+                                    marker = L.marker([latitude,longitude]);
+    
+                                    marker.bindPopup(`<div class="map__popup">
+                                                        <a class="map__popup-linkarea" href="${product.link}"> 
+                                                            <h4 class="map__popup-title">${product.title}</h4> 
+                                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img> 
+                                                        </a> 
+                                                    </div>
+                                                    `);
+    
+                                    marker.on('click', function(e) {
+                                        let markerCoords = this.getLatLng();
+                                        let currentZoom = map.getZoom();
+                                        if(currentZoom>6){
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
+                                        }else{
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
+                                        }
+                                        this.openPopup();
+                                    });
+
+                                    marker.on('popupclose', function() {
+                                        
+                                        map.flyToBounds(clusterBounds, {
+                                            duration: 1,
+                                        });
+                                        
+                                    });
+    
+                                    categoryMarkers.addLayer(marker);
+                                
+    
+                                }else{
+                                    console.log(`Ignoring product with the id: ${product.ID}`);
+                                }
+                            });
+                            console.log(categoryMarkers);
+                            markerCategoryGroups[category] = categoryMarkers;
+                            totalClusterGroup.addLayer(markerCategoryGroups[category]);
+                            updateBounds();
+                            //map.addLayer(markerCategoryGroups[category]);
+                        });
+                    }
+
+                console.log("This is the cluster object", markerCategoryGroups);
+
+                reCenterMap();
                     
                 }
                 else{
