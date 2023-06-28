@@ -123,7 +123,8 @@ jQuery(document).ready(function($) {
 
                         categoriesToRemove.forEach(function(category){
 
-                            markerCategoryGroups[category].clearLayers();
+                            totalClusterGroup.removeLayer(markerCategoryGroups[category]);
+                            //markerCategoryGroups[category].clearLayers();
                             delete markerCategoryGroups[category];
                             console.log("This should delete the unchecked categories",markerCategoryGroups);
                         });
