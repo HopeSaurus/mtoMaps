@@ -93,6 +93,7 @@ jQuery(document).ready(function($) {
                             markerCategoryGroups[category] = categoryMarkers;
                             totalClusterGroup.addLayer(markerCategoryGroups[category]);
                             //map.addLayer(markerCategoryGroups[category]);
+                            updateBounds();
                         });
                     }
 
@@ -152,7 +153,6 @@ jQuery(document).ready(function($) {
         //Only call ajax if theres categories to add
         categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
 
-        updateBounds();
         reCenterMap();
     }
 
@@ -202,6 +202,7 @@ jQuery(document).ready(function($) {
             delete markerCategoryGroups[category];
             console.log("This should delete the unchecked categories",markerCategoryGroups);
         });
+        updateBounds();
         hideLoading();
     }
     
