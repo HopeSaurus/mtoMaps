@@ -155,8 +155,6 @@ jQuery(document).ready(function($) {
         //Only call ajax if theres categories to add
         categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
 
-        reCenterMap();
-
     }
 
     function cleanCheckboxes(){
@@ -207,6 +205,7 @@ jQuery(document).ready(function($) {
         });
         updateBounds();
         hideLoading();
+        reCenterMap();
     }
     
     function updateBounds(){
