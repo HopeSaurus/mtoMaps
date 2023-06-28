@@ -20,7 +20,7 @@ require_once plugin_dir_path(__FILE__) . 'ajax-handle.php';
 function render_leaflet_map($atts) {
     // Extract shortcode attributes
     $atts = shortcode_atts(array(
-        'zoom' => '2.25',
+        'zoom' => '6',
     ), $atts);
 
     // Generate map HTML
@@ -42,10 +42,9 @@ function render_leaflet_map($atts) {
     <script>
         // Leaflet map initialization
         let map = L.map('map',{
-            minZoom: 2.25
+            minZoom: 6
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
         
-        //Coordinates for the edge of the world
         var bounds = L.latLngBounds([14.532866, -118.453531],[32.718561, -86.647219] );
         //Setting those coordinates as our boundaries
         map.setMaxBounds(bounds);
