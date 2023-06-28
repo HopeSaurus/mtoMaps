@@ -15,6 +15,7 @@ function display_product_category_checkboxes() {
         foreach ($categories as $category) {
             echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $category->slug . '"> ' . $category->name . '</label></li>';
         }
+        echo '<li><label><button class="clean-checkboxes" >Limpiar</button></label></li>';
         echo '</ul>';
         echo '</div>';
     } else {
