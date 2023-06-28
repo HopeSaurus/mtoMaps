@@ -53,7 +53,7 @@ function render_leaflet_map($atts) {
             map.panInsideBounds(bounds, { animate: false });
         });
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png',{
 
         }
         ).addTo(map);
