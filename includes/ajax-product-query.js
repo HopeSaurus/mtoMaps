@@ -183,9 +183,9 @@ jQuery(document).ready(function($) {
             var categoryName = $(this).data('category-slug');
             // Push the category name to the selectedCategories array
             selectedCategories.push(categoryName);
-            console.log(selectedCategories);
         });
 
+        console.log(selectedCategories);
         // Call the Ajax function to retrieve the products based on selected categories
         getProductsByCategories();
     }
