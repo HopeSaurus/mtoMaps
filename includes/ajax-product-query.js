@@ -141,9 +141,7 @@ jQuery(document).ready(function($) {
                     
                     if(Object.keys(markerCategoryGroups)!=0){
 
-                        for(cluster in markerCategoryGroups){
-                            clusterBounds.extend(markerCategoryGroups[cluster].getBounds());
-                        }
+                        clusterBounds = totalClusterGroup.getBounds();
 
                         map.flyToBounds(clusterBounds, {
                             duration: 1,
