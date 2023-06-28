@@ -94,6 +94,7 @@ jQuery(document).ready(function($) {
                             totalClusterGroup.addLayer(markerCategoryGroups[category]);
                             //map.addLayer(markerCategoryGroups[category]);
                             updateBounds();
+                            reCenterMap();
                         });
                     }
 
@@ -153,7 +154,6 @@ jQuery(document).ready(function($) {
         //Only call ajax if theres categories to add
         categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
 
-        reCenterMap();
     }
 
     function cleanCheckboxes(){
@@ -202,8 +202,9 @@ jQuery(document).ready(function($) {
             delete markerCategoryGroups[category];
             console.log("This should delete the unchecked categories",markerCategoryGroups);
         });
-        updateBounds();
         hideLoading();
+        updateBounds();
+        reCenterMap();
     }
     
     function updateBounds(){
