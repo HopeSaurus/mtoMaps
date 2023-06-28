@@ -20,7 +20,7 @@ require_once plugin_dir_path(__FILE__) . 'ajax-handle.php';
 function render_leaflet_map($atts) {
     // Extract shortcode attributes
     $atts = shortcode_atts(array(
-        'zoom' => '6',
+        'zoom' => '5',
     ), $atts);
 
     // Generate map HTML
@@ -42,7 +42,7 @@ function render_leaflet_map($atts) {
     <script>
         // Leaflet map initialization
         let map = L.map('map',{
-            minZoom: 6
+            minZoom: 5
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
         
         var bounds = L.latLngBounds([14.532866, -118.453531],[32.718561, -86.647219] );
