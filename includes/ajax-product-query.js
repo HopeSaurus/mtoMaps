@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
     let selectedCategories = [];
 
     // Function to perform the Ajax request
-    function getProductsByCategories() {
+    function getProductsByCategories(categoriesToDisplay) {
 
         showLoading();
         hideNoProducts();
@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
             method: 'POST',
             data: {
                 action: 'fetch_products',
-                categories: selectedCategories,
+                categories: categoriesToDisplay,
                 nonce: myAjax.nonce
             },
             success: function(response){
@@ -26,28 +26,11 @@ jQuery(document).ready(function($) {
                 
                 if(response.success){
                     console.log("Query succesful", response);
-                    let categoriesToDisplay;
-                    let categoriesToRemove;
-                    let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
-                    let decision = categoriesDisplayedOnMap.length - selectedCategories.length;
-                    clusterBounds = L.latLngBounds();
 
-                    //If theres no category selected or there are no items belonging to that category return
-                    if(decision == 0 ) return;
-                    //If theres more categories selected than displaying search for the ones that are missing 
-                    else if( decision < 0 ){
-
-                        //If theres a category to display but theres no products belonging to that category display a message window
                         if( Object.keys(response.data)<=0){
                             showNoProducts();
                         }
                         else{
-                            categoriesToDisplay = selectedCategories.filter(function(category){
-
-                                return !categoriesDisplayedOnMap.includes(category);
-
-                            });
-                        
                             console.log("These are the categories to display", categoriesToDisplay);
 
                             categoriesToDisplay.forEach(function(category){
@@ -112,50 +95,9 @@ jQuery(document).ready(function($) {
                                 //map.addLayer(markerCategoryGroups[category]);
                             });
                         }
-                    //If theres more categories displaying that selected, search for the ones to remove
-                    }else if( decision > 0){
-
-                        categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
-
-                            return !selectedCategories.includes(category);
-
-                        });
-
-                        categoriesToRemove.forEach(function(category){
-
-                            totalClusterGroup.removeLayer(markerCategoryGroups[category]);
-                            //markerCategoryGroups[category].clearLayers();
-                            delete markerCategoryGroups[category];
-                            console.log("This should delete the unchecked categories",markerCategoryGroups);
-                        });
-
-                    }
-                    //This shouldnt ever happen
-                    else
-                    {
-                        console.log("No categories selected nor displaying");
-                    }
-
 
                     console.log("This is the cluster object", markerCategoryGroups);
                     
-                    if(Object.keys(markerCategoryGroups)!=0){
-
-                        clusterBounds = totalClusterGroup.getBounds();
-
-                        map.flyToBounds(clusterBounds, {
-                            duration: 1,
-                        });
-
-                    }else if (Object.keys(markerCategoryGroups)==0){
-
-                        map.flyToBounds(bounds, {
-                            duration: 1,
-                        });
-
-                    }else{
-                        console.log("What f happened?");
-                    }
                 }
                 else{
                     console.log("Don't try dirty things");
@@ -175,6 +117,10 @@ jQuery(document).ready(function($) {
     function handleCheckboxClick() {
         // Clear the selected categories array
         selectedCategories = [];
+        //Check which categories are displayed or not 
+        let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
+        let categoriesToRemove;
+        let categoriesToDisplay;
 
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
@@ -184,9 +130,29 @@ jQuery(document).ready(function($) {
             selectedCategories.push(categoryName);
         });
 
-        console.log(selectedCategories);
-        // Call the Ajax function to retrieve the products based on selected categories
-        getProductsByCategories();
+        categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
+
+            return !selectedCategories.includes(category);
+
+        });
+
+        categoriesToDisplay = selectedCategories.filter(function(category){
+
+            return !categoriesDisplayedOnMap.includes(category);
+
+        });
+
+        console.log("Categories to remove:", categoriesToRemove);
+
+        console.log("Categories to display:", categoriesToDisplay);
+
+        //Do not need to call ajax if theres only categories to remove 
+        categoriesToRemove.length!=0? removeCategories(categoriesToRemove) : "" ;
+
+        //Only call ajax if theres categories to add
+        categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
+
+        reCenterMap();
     }
 
     function cleanCheckboxes(){
@@ -202,27 +168,60 @@ jQuery(document).ready(function($) {
     $('.clean-checkboxes').on('click', cleanCheckboxes);
 
     // On page load, call the Ajax function to retrieve all products by default
-    getProductsByCategories();
+    //getProductsByCategories();
+
+    function showLoading(){
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.classList.remove('hide-div');
+    }
+    
+    function hideLoading(){
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.classList.add('hide-div');
+    }
+    
+    function showNoProducts(){
+        const noProductsMessage = document.getElementById('map-message');
+        noProductsMessage.classList.remove('hide-div')
+    }
+    
+    function hideNoProducts(){
+        const noProductsMessage = document.getElementById('map-message');
+        if(!noProductsMessage.classList.contains('hide-div')){
+            noProductsMessage.classList.add('hide-div')
+        }
+    }
+    
+    function removeCategories(categoriesToRemove){
+        showLoading();
+        categoriesToRemove.forEach(function(category){
+    
+            totalClusterGroup.removeLayer(markerCategoryGroups[category]);
+            //markerCategoryGroups[category].clearLayers();
+            delete markerCategoryGroups[category];
+            console.log("This should delete the unchecked categories",markerCategoryGroups);
+        });
+        hideLoading();
+    }
+    
+    function reCenterMap(){
+        if(Object.keys(markerCategoryGroups)!=0){
+    
+            clusterBounds = totalClusterGroup.getBounds();
+    
+            map.flyToBounds(clusterBounds, {
+                duration: 1,
+            });
+    
+        }else if (Object.keys(markerCategoryGroups)==0){
+    
+            map.flyToBounds(bounds, {
+                duration: 1,
+            });
+    
+        }else{
+            console.log("What f happened?");
+        }
+    }
 });
 
-function showLoading(){
-    const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.remove('hide-div');
-}
-
-function hideLoading(){
-    const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.add('hide-div');
-}
-
-function showNoProducts(){
-    const noProductsMessage = document.getElementById('map-message');
-    noProductsMessage.classList.remove('hide-div')
-}
-
-function hideNoProducts(){
-    const noProductsMessage = document.getElementById('map-message');
-    if(!noProductsMessage.classList.contains('hide-div')){
-        noProductsMessage.classList.add('hide-div')
-    }
-}

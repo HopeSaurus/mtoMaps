@@ -67,6 +67,8 @@ function render_leaflet_map($atts) {
             showCoverageOnHover: false,
         });
 
+        var clusterBounds = L.latLngBounds();
+
         map.addLayer(totalClusterGroup);
 
     </script>
