@@ -33,7 +33,6 @@ jQuery(document).ready(function($) {
                     clusterBounds = L.latLngBounds();
 
                     //If theres no category selected or there are no items belonging to that category return
-                    //TODO: Handle message when theres no products belonging to a category
                     if(decision == 0 ) return;
                     //If theres more categories selected than displaying search for the ones that are missing 
                     else if( decision < 0 ){
@@ -109,7 +108,8 @@ jQuery(document).ready(function($) {
                                 });
                                 console.log(categoryMarkers);
                                 markerCategoryGroups[category] = categoryMarkers;
-                                map.addLayer(markerCategoryGroups[category]);
+                                totalClusterGroup.addLayer(markerCategoryGroups[category]);
+                                //map.addLayer(markerCategoryGroups[category]);
                             });
                         }
                     //If theres more categories displaying that selected, search for the ones to remove

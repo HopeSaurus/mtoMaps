@@ -62,6 +62,13 @@ function render_leaflet_map($atts) {
         var markerCategoryGroups = {};
         let marker;
 
+        var totalClusterGroup = 
+        L.markerClusterGroup({
+            showCoverageOnHover: false,
+        });
+
+        map.addLayer(totalClusterGroup);
+
     </script>
     <?php
     return ob_get_clean();
