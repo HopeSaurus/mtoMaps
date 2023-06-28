@@ -229,9 +229,7 @@ jQuery(document).ready(function($) {
     }
 
     function closePopUps(){
-        if (map.hasOpenPopup()){
-            map.closePopup();
-        }
+        map.closePopup();
     }
 
 });
