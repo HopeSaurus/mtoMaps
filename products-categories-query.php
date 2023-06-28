@@ -3,7 +3,7 @@
 function display_product_category_checkboxes() {
     $args = array(
         'taxonomy' => 'product_cat',
-        'hide_empty' => false,
+        'hide_empty' => true,
     );
 
     $categories = get_terms($args);
