@@ -204,6 +204,7 @@ jQuery(document).ready(function($) {
         });
         hideLoading();
         updateBounds();
+        closePopUps();
         reCenterMap();
     }
     
@@ -225,6 +226,12 @@ jQuery(document).ready(function($) {
         map.flyToBounds(clusterBounds, {
             duration: 1,
         });
+    }
+
+    function closePopUps(){
+        if (map.hasOpenPopup()){
+            map.closePopup();
+        }
     }
 
 });
