@@ -46,7 +46,7 @@ function render_leaflet_map($atts) {
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
         
         //Coordinates for the edge of the world
-        var bounds = L.latLngBounds([-60, -180], [90, 180]);
+        var bounds = L.latLngBounds([-117.12776, 14.5388286402], [-86.811982388, 180]);
         //Setting those coordinates as our boundaries
         map.setMaxBounds(bounds);
         //Stop the user from dragging the map out of bounds
