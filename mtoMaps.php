@@ -4,7 +4,7 @@
  * 
  * Plugin Name: MTO Maps
  * Description: This plugin is made to retrieve woocommerce products and its geolocation to pin it inside a map.
- * Version: 1.0
+ * Version: 2.0
  * Author: Ximena Bolaños Cacho
  * 
  */

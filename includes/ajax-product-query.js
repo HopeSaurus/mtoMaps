@@ -1,7 +1,3 @@
-//TODO:
-//BY DEFAULT SHOULD BE SHOWING EVERY CATEGORY
-//REMOVE CONSOLE LOGS
-
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
@@ -25,26 +21,19 @@ jQuery(document).ready(function($) {
                 hideLoading();
                 
                 if(response.success){
-                    console.log("Query succesful", response);
 
                     if( Object.keys(response.data)<=0){
                         showNoProducts();
                     }
                     else{
-                        console.log("These are the categories to display", categoriesToDisplay);
 
                         categoriesToDisplay.forEach(function(category){
-
-                            console.log(category);
-                            console.log('should be accesing the products here',response.data[category]);
     
                             let categoryMarkers = L.markerClusterGroup({
                                 showCoverageOnHover: false,
                             });
     
                             const products = response.data[category];
-
-                            console.log("These are the products array", products);
     
                             products.forEach(function(product){
     
@@ -89,29 +78,22 @@ jQuery(document).ready(function($) {
                                     console.log(`Ignoring product with the id: ${product.ID}`);
                                 }
                             });
-                            console.log(categoryMarkers);
                             markerCategoryGroups[category] = categoryMarkers;
                             totalClusterGroup.addLayer(markerCategoryGroups[category]);
-                            //map.addLayer(markerCategoryGroups[category]);
                             updateBounds();
                             closePopUps();
                             reCenterMap();
                         });
-                    }
-
-                console.log("This is the cluster object", markerCategoryGroups);
-                    
+                    }  
                 }
                 else{
-                    console.log("Don't try dirty things");
                     location.reload();
                 }
 
             },
             error: function(xhr,status,error) {
-                console.log('Error occurred during Ajax request.');
+                console.error(error);
                 hideLoading();
-
             }
         });
     }
@@ -155,10 +137,6 @@ jQuery(document).ready(function($) {
 
             });
         }
-
-        console.log("Categories to remove:", categoriesToRemove);
-
-        console.log("Categories to display:", categoriesToDisplay);
 
         //Do not need to call ajax if theres only categories to remove 
         categoriesToRemove.length!=0? removeCategories(categoriesToRemove) : "" ;
@@ -212,7 +190,6 @@ jQuery(document).ready(function($) {
             totalClusterGroup.removeLayer(markerCategoryGroups[category]);
             //markerCategoryGroups[category].clearLayers();
             delete markerCategoryGroups[category];
-            console.log("This should delete the unchecked categories",markerCategoryGroups);
         });
         hideLoading();
         updateBounds();
