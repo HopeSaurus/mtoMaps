@@ -42,7 +42,7 @@ function render_leaflet_map($atts) {
     <script>
         // Leaflet map initialization
         let map = L.map('map',{
-            minZoom: 5
+            minZoom: 4
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
         
         var bounds = L.latLngBounds([4.532866, -128.453531],[42.718561, -76.647219] );

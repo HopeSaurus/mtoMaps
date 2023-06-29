@@ -122,28 +122,39 @@ jQuery(document).ready(function($) {
         selectedCategories = [];
         //Check which categories are displayed or not 
         let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
-        let categoriesToRemove;
-        let categoriesToDisplay;
+        let categoriesToRemove = [];
+        let categoriesToDisplay = [];
 
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
             // Get the category name from the data-category-name attribute
-            var categoryName = $(this).data('category-slug');
+            let categoryName = $(this).data('category-slug');
             // Push the category name to the selectedCategories array
             selectedCategories.push(categoryName);
         });
 
-        categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
+        if(selectedCategories.length!=0){
+            categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
 
-            return !selectedCategories.includes(category);
+                return !selectedCategories.includes(category);
 
-        });
+            });
 
-        categoriesToDisplay = selectedCategories.filter(function(category){
+            categoriesToDisplay = selectedCategories.filter(function(category){
 
-            return !categoriesDisplayedOnMap.includes(category);
+                return !categoriesDisplayedOnMap.includes(category);
 
-        });
+            });
+        }else if(selectedCategories.length==0){
+
+            $('input[type="checkbox"]:not(:checked)').each(function() {
+
+                let categoryName = $(this).data('category-slug');
+                
+                categoriesToDisplay.push(categoryName);
+
+            });
+        }
 
         console.log("Categories to remove:", categoriesToRemove);
 
@@ -232,6 +243,8 @@ jQuery(document).ready(function($) {
     function closePopUps(){
         map.closePopup();
     }
+
+    handleCheckboxClick();
 
 });
 
