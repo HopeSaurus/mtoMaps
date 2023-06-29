@@ -57,11 +57,12 @@ jQuery(document).ready(function($) {
                                     marker.on('click', function(e) {
                                         let markerCoords = this.getLatLng();
                                         let currentZoom = map.getZoom();
+                                        /*
                                         if(currentZoom>6){
                                             map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
                                         }else{
                                             map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
-                                        }
+                                        }*/
                                         this.openPopup();
                                     });
                                     /*
