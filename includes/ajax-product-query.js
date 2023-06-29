@@ -40,7 +40,9 @@ jQuery(document).ready(function($) {
                                 let latitude = product.latitude;
                                 let longitude = product.longitude;
     
-                                if(latitude && longitude){
+                                if(latitude && longitude/* && (markersIDs[product.ID]==undefined)*/){
+
+                                    markersIDs[product.ID] = 1;
     
                                     marker = L.marker([latitude,longitude]);
     
@@ -62,20 +64,21 @@ jQuery(document).ready(function($) {
                                         }
                                         this.openPopup();
                                     });
-
+                                    /*
                                     marker.on('popupclose', function() {
                                         
                                         map.flyToBounds(clusterBounds, {
                                             duration: 1,
                                         });
-                                        
+                                    
                                     });
-    
+                                    */
                                     categoryMarkers.addLayer(marker);
                                 
     
                                 }else{
                                     console.log(`Ignoring product with the id: ${product.ID}`);
+                                    markersIDs[product.ID] += 1;
                                 }
                             });
                             markerCategoryGroups[category] = categoryMarkers;
