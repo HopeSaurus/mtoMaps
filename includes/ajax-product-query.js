@@ -40,9 +40,7 @@ jQuery(document).ready(function($) {
                                 let latitude = product.latitude;
                                 let longitude = product.longitude;
     
-                                if(latitude && longitude/* && (markersIDs[product.ID]==undefined)*/){
-
-                                    markersIDs[product.ID] = 1;
+                                if(latitude && longitude /*&& (markersIDs[product.ID]==undefined)*/){
     
                                     marker = L.marker([latitude,longitude]);
     
@@ -74,12 +72,12 @@ jQuery(document).ready(function($) {
                                     
                                     });
                                     */
+                                    //markersIDs[product.ID] = 1;
                                     categoryMarkers.addLayer(marker);
-                                
     
                                 }else{
                                     console.log(`Ignoring product with the id: ${product.ID}`);
-                                    markersIDs[product.ID] += 1;
+                                    //markersIDs[product.ID] += 1;
                                 }
                             });
                             markerCategoryGroups[category] = categoryMarkers;
@@ -119,7 +117,17 @@ jQuery(document).ready(function($) {
             selectedCategories.push(categoryName);
         });
 
-        if(selectedCategories.length!=0){
+        if(selectedCategories.length==0){
+
+            $('input[type="checkbox"]:not(:checked)').each(function() {
+
+                let categoryName = $(this).data('category-slug');
+                
+                selectedCategories.push(categoryName);
+
+            });
+        }
+
             categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
 
                 return !selectedCategories.includes(category);
@@ -131,16 +139,6 @@ jQuery(document).ready(function($) {
                 return !categoriesDisplayedOnMap.includes(category);
 
             });
-        }else if(selectedCategories.length==0){
-
-            $('input[type="checkbox"]:not(:checked)').each(function() {
-
-                let categoryName = $(this).data('category-slug');
-                
-                categoriesToDisplay.push(categoryName);
-
-            });
-        }
 
         //Do not need to call ajax if theres only categories to remove 
         categoriesToRemove.length!=0? removeCategories(categoriesToRemove) : "" ;
