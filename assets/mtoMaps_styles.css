@@ -20,6 +20,9 @@ root{
 }
 
 #map-center-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     position: relative;
     top: calc(var(--map-height) - 40px);
