@@ -1,9 +1,11 @@
-const mapCenterButton = document.getElementById('map-center-button');
+jQuery(document).ready(function($) {
+  const mapCenterButton = document.getElementById('map-center-button');
 
-function centerMap(){
-  map.flyToBounds(clusterBounds, {
-    duration: 1,
-  });
+  function centerMap(){
+    map.flyToBounds(clusterBounds, {
+      duration: 1,
+    });
+  }
+
+  mapCenterButton.addEventListener('click', centerMap);
 }
-
-mapCenterButton.addEventListener('click', centerMap);
