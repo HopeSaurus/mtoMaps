@@ -23,6 +23,7 @@
 }
 
 .map__popup{
+    background-color: #d8d9da;
     display:flex; 
     flex-direction:column; 
     width:150px; 
