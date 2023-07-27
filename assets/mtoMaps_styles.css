@@ -23,14 +23,19 @@ root{
     cursor: pointer;
     position: relative;
     top: calc(var(--map-height) - 40px);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.4);
     font-family: "Livvic", sans-serif;
     font-size: 32px;
     color: #000;
     height: 40px;
+    padding-bottom: 4px;
     width: 100%;
     text-align: center;
-    z-index: 9999;
+    z-index: 100;
+}
+
+#map-center-button:hover{
+
 }
 
 @media only screen and (min-width: 1024px) {
