@@ -57,13 +57,13 @@ jQuery(document).ready(function($) {
                                         let markerCoords = this.getLatLng();
                                         let currentZoom = map.getZoom();
 
-                                        if(currentZoom>6){
+                                        if(currentZoom>10){
                                             map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
                                         }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 6, { duration: 0.5 });
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 10, { duration: 0.5 });
                                         }
                                         this.openPopup();
-                                        
+
                                     });
                                     /*
                                     marker.on('popupclose', function() {
