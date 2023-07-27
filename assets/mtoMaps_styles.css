@@ -17,12 +17,14 @@
 }
 
 #map-center-button{
+    cursor: pointer;
     position: relative;
+    bottom: 0;
     background-color: rgba(255, 255, 255, 0.7);
     font-family: "Livvic", sans-serif;
-    font-size: 16px;
+    font-size: 32px;
     color: #000;
-    height: 50px;
+    height: 40px;
     width: 100%;
     text-align: center;
     z-index: 9999;
