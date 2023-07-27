@@ -8,4 +8,4 @@ jQuery(document).ready(function($) {
   }
 
   mapCenterButton.addEventListener('click', centerMap);
-}
+});
