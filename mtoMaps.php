@@ -29,6 +29,7 @@ function render_leaflet_map($atts) {
     <div id="mtoMap">
         <?php display_product_category_checkboxes(); ?>
         <div id="map">
+            <div id="map-center-button">Centrar Mapa</div>
             <div id="map-message" class="hide-div">
                 <p class="loading-text">No se han encontrado piezas pertenecientes a esa categoría</p>
             </div>  
