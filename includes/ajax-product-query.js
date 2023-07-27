@@ -46,9 +46,9 @@ jQuery(document).ready(function($) {
     
                                     marker.bindPopup(`<div class="map__popup">
                                                         <a class="map__popup-linkarea" href="${product.link}"> 
+                                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img>
                                                             <div class="map__popup-title">${product.title}</div>
                                                             <div class="map__popup-subtitle">${product.location}</div>
-                                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img> 
                                                         </a> 
                                                     </div>
                                                     `);
