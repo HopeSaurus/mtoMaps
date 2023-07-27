@@ -88,8 +88,8 @@ root{
     justify-content:center;
 }
 
-.map__popup img{
-    border-radius: 50px;
+#map .map__popup img{
+    border-radius: 10px;
     display: inline-block;
     text-align: center;
     width:100px;
