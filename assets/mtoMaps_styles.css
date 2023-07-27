@@ -93,13 +93,13 @@ root{
     display: inline-block;
     text-align: center;
     width:100px;
-    height:100px;
+    height:auto;
 }
 
 @media only screen and (min-width: 675px) {
-    .map__popup img{
+    #map .map__popup img{
         width:150px;
-        height:150px;
+        height:auto;
     } 
 }
 
