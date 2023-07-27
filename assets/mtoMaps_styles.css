@@ -89,6 +89,7 @@ root{
 }
 
 .map__popup img{
+    border-radius: 50px;
     display: inline-block;
     text-align: center;
     width:100px;
