@@ -1,6 +1,9 @@
 /*
     Map related styling
 */
+root{
+--map-height: 65vh;
+}
 
 #mtoMap{
     position: relative;
@@ -11,7 +14,7 @@
 }
 
 #map{
-    height:65vh;
+    height:var(--map-height);
     width: 100%;
     border-radius: 50px;
 }
@@ -19,7 +22,7 @@
 #map-center-button{
     cursor: pointer;
     position: relative;
-    bottom: 0;
+    top: calc(var(--map-height) - 40px);
     background-color: rgba(255, 255, 255, 0.7);
     font-family: "Livvic", sans-serif;
     font-size: 32px;
@@ -32,7 +35,7 @@
 
 @media only screen and (min-width: 1024px) {
     #map{
-        height: 60vh;
+        --map-height:60vh;
     }
 }
 
