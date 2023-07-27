@@ -39,8 +39,8 @@
 
 @media only screen and (min-width: 675px) {
     .map__popup{
-        width:100px;
-        height:100px;
+        width:200px;
+        height:200px;
     } 
 }
 
@@ -76,7 +76,7 @@
     } 
 }
 
-a:hover .map__popup-title, .map__popup-subtitle{
+a:hover .map__popup-title, a:hover .map__popup-subtitle{
     text-decoration: underline;
 }
 
