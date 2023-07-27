@@ -95,11 +95,13 @@ function enqueue_custom_mtoMaps_assets(){
 }
 
 
-function enqueue_ajax_query(){
+function enqueue_custom_js(){
     if (is_page() && has_shortcode(get_post()->post_content, 'leaflet_map')){
         $js_dir = plugin_dir_url(__FILE__) . "includes";
         $ajax_query_dir = $js_dir . "/ajax-product-query.js";
+        $mtoMaps_dir = $js_dir . "/mtoMaps.js";
         wp_enqueue_script('ajax_query_js', $ajax_query_dir , Array(), null, null);
+        wp_enqueue_script('mtoMaps_js', $mtoMaps_dir , Array(), null, null);
 
         $ajax_nonce = wp_create_nonce('my_ajax_nonce');
 
@@ -112,6 +114,6 @@ function enqueue_ajax_query(){
 
 add_action('wp_enqueue_scripts', 'enqueue_leaflet_map_assets');
 add_action('wp_enqueue_scripts', 'enqueue_custom_mtoMaps_assets');
-add_action('wp_enqueue_scripts', 'enqueue_ajax_query');
+add_action('wp_enqueue_scripts', 'enqueue_custom_js');
  
 ?> 
