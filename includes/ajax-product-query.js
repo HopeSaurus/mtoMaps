@@ -57,10 +57,10 @@ jQuery(document).ready(function($) {
                                         let markerCoords = this.getLatLng();
                                         let currentZoom = map.getZoom();
 
-                                        if(currentZoom>10){
+                                        if(currentZoom>=25){
                                             map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
                                         }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 10, { duration: 0.5 });
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 25, { duration: 0.5 });
                                         }
                                         this.openPopup();
 
