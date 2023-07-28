@@ -121,14 +121,16 @@ a:link, a:visited{
 */
 .categories-container{
     position: relative;
+    flex-direction: column;
     display: flex;
+    justify-content: center;
     align-content: flex-end;
     padding-bottom: 10px;
 }
 
 .categories-list__title{
     margin-bottom: 12px;
-    color: #C23B33;
+    color: #000
 }
 
 ul.categories-list{
