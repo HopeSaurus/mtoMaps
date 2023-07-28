@@ -137,6 +137,11 @@ a:link, a:visited{
     color: #000
 }
 
+.categories-list__title img{
+    border-radius: 5px;
+    border: 2px solid red;
+}
+
 ul.categories-list{
     align-items: center;
     justify-content: flex-end;
