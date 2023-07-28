@@ -125,14 +125,14 @@ a:link, a:visited{
     flex-direction: column;
     display: flex;
     justify-content: center;
-    align-content: flex-end;
+    align-content: center;
     padding-bottom: 10px;
 }
 
 .categories-list__title{
-    justify-self: flex-end;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     margin-bottom: 12px;
     color: #000
 }
