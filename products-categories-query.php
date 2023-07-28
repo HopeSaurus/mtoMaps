@@ -8,7 +8,7 @@ function display_product_category_checkboxes() {
 
     $categories = get_terms($args);
 
-    $filter_img_url = plugin_dir_path(__FILE__) . '/assets/filtro.png';
+    $filter_img_url = plugins_url(__FILE__) . '/assets/filtro.png';
 
     if (!empty($categories)) {
         echo '<div class="categories-container">';
