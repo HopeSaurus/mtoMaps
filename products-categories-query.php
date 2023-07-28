@@ -10,7 +10,7 @@ function display_product_category_checkboxes() {
 
     if (!empty($categories)) {
         echo '<div class="categories-container">';
-        echo '<h4 class="categories-list__title">Filtrar por:</h4>';
+        echo '<div class="categories-list__title"><img src="assets/filtro.png">Filtrar</div>';
         echo '<ul class="categories-list">';
         foreach ($categories as $category) {
             echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $category->slug . '"> ' . $category->name . '</label></li>';

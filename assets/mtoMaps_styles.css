@@ -120,6 +120,9 @@ a:link, a:visited{
     Checkbox Styling
 */
 .categories-container{
+    position: relative;
+    display: flex;
+    align-content: flex-end;
     padding-bottom: 10px;
 }
 
