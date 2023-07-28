@@ -132,6 +132,7 @@ a:link, a:visited{
 .categories-list__title{
     display: flex;
     cursor: pointer;
+    gap: 5px;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 12px;
@@ -139,7 +140,7 @@ a:link, a:visited{
 }
 
 #mtoMap .categories-list__title img{
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid red;
 }
 
