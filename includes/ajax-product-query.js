@@ -39,8 +39,8 @@ jQuery(document).ready(function($) {
     
                             products.forEach(function(product){
     
-                                let latitude = parseFloat(product.latitude) + ((Math.random()) * 0.002 * modifierOne[index]);
-                                let longitude = parseFloat(product.longitude) + ((Math.random()) * 0.002 * modifierTwo[index]);
+                                let latitude = parseFloat(product.latitude) + (0.001 * modifierOne[index]);
+                                let longitude = parseFloat(product.longitude) + (0.001 * modifierTwo[index]);
                                 index<8? index++: index=0;
     
                                 if(latitude && longitude /*&& (markersIDs[product.ID]==undefined)*/){
