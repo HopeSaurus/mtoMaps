@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
                                 let longitude = product.longitude;
                                 index<8? index++: index=0;
     
-                                if(latitude && longitude /*&& (markersIDs[product.ID]==undefined)*/){
+                                if(latitude && longitude ){
     
                                     marker = L.marker([latitude,longitude]);
     
@@ -61,28 +61,17 @@ jQuery(document).ready(function($) {
                                         let currentZoom = map.getZoom();
 
                                         if(currentZoom>=17){
-                                            map.flyToBounds([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
                                         }else{
-                                            map.flyToBounds([markerCoords.lat ,markerCoords.lng], 17,{duration: 0.5});
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{duration: 0.5});
                                         }
                                         this.openPopup();
 
                                     });
-                                    /*
-                                    marker.on('popupclose', function() {
-                                        
-                                        map.flyToBounds(clusterBounds, {
-                                            duration: 1,
-                                        });
-                                    
-                                    });
-                                    */
-                                    //markersIDs[product.ID] = 1;
                                     categoryMarkers.addLayer(marker);
     
                                 }else{
                                     console.log(`Ignoring product with the id: ${product.ID}`);
-                                    //markersIDs[product.ID] += 1;
                                 }
                             });
                             markerCategoryGroups[category] = categoryMarkers;
