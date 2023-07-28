@@ -1,9 +1,6 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
-    const modifierOne = [-1,0,1,-1,0,1,-1,0,1];
-    const modifierTwo = [-1,-1,-1,0,0,0,1,1,1];
-    let index = 0;
     // Function to perform the Ajax request
     function getProductsByCategories(categoriesToDisplay) {
 
@@ -41,7 +38,6 @@ jQuery(document).ready(function($) {
     
                                 let latitude = product.latitude;
                                 let longitude = product.longitude;
-                                index<8? index++: index=0;
     
                                 if(latitude && longitude ){
     
@@ -63,7 +59,7 @@ jQuery(document).ready(function($) {
                                         if(currentZoom>=17){
                                             map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
                                         }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{easeLinearity: 0.5 });
+                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
                                         }
                                         this.openPopup();
 
@@ -209,7 +205,7 @@ jQuery(document).ready(function($) {
 
     function reCenterMap(){
         map.flyToBounds(clusterBounds, {
-            duration: 1,
+            animate: false
         });
     }
 
