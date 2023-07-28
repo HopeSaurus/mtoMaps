@@ -138,7 +138,7 @@ a:link, a:visited{
     color: #000
 }
 
-.categories-list__title img{
+#mtoMap .categories-list__title img{
     border-radius: 5px;
     border: 2px solid red;
 }
