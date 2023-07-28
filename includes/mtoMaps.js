@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
 
   function centerMap(){
     map.flyToBounds(clusterBounds, {
-      duration: 0.2,
+      animate: false
     });
   }
 
