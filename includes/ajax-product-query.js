@@ -61,9 +61,9 @@ jQuery(document).ready(function($) {
                                         let currentZoom = map.getZoom();
 
                                         if(currentZoom>=17){
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, { duration: 0.5 });
+                                            map.setView([markerCoords.lat ,markerCoords.lng], currentZoom);
                                         }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 17, { duration: 0 });
+                                            map.setView([markerCoords.lat ,markerCoords.lng], 17);
                                         }
                                         this.openPopup();
 
