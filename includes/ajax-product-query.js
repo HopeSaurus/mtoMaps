@@ -1,6 +1,9 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
+    const modifierOne = [-1,0,1,-1,0,1,-1,0,1];
+    const modifierTwo = [-1,-1,-1,0,0,0,1,1,1];
+    let index = 0;
     // Function to perform the Ajax request
     function getProductsByCategories(categoriesToDisplay) {
 
@@ -36,8 +39,9 @@ jQuery(document).ready(function($) {
     
                             products.forEach(function(product){
     
-                                let latitude = parseFloat(product.latitude) + ((Math.random() - 0.5) * 0.003);
-                                let longitude = parseFloat(product.longitude) + ((Math.random() - 0.5) * 0.003);
+                                let latitude = parseFloat(product.latitude) + ((Math.random()) * 0.001 * modifierOne[index]);
+                                let longitude = parseFloat(product.longitude) + ((Math.random()) * 0.001 * modifierTwo[index]);
+                                index<8? index++: index=0;
     
                                 if(latitude && longitude /*&& (markersIDs[product.ID]==undefined)*/){
     
