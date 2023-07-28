@@ -139,6 +139,7 @@ a:link, a:visited{
 
 ul.categories-list{
     align-items: center;
+    justify-content: flex-end;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
