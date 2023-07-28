@@ -8,9 +8,11 @@ function display_product_category_checkboxes() {
 
     $categories = get_terms($args);
 
+    $filter_img_url = plugin_dir_path(__FILE__) . '/assets/filtro.png';
+
     if (!empty($categories)) {
         echo '<div class="categories-container">';
-        echo '<div class="categories-list__title"><img src="assets/filtro.png">Filtrar</div>';
+        echo '<div class="categories-list__title"><img src=' . $filter_img_url . '>Filtrar</div>';
         echo '<ul class="categories-list">';
         foreach ($categories as $category) {
             echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $category->slug . '"> ' . $category->name . '</label></li>';
