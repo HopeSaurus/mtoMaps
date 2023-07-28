@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
                                         if(currentZoom>=17){
                                             map.flyToBounds([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
                                         }else{
-                                            map.setView([markerCoords.lat ,markerCoords.lng], 17);
+                                            map.flyToBounds([markerCoords.lat ,markerCoords.lng], 17,{duration: 0.5});
                                         }
                                         this.openPopup();
 
