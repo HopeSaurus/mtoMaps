@@ -42,6 +42,7 @@ function fetch_products(){
     $query = new WP_Query($query_args);
 
     $query->set('meta_query', array(
+        'relation' => 'AND',
         array(
             'key'   => 'comunidad_nombre',
             'value' => 'Maguey Largo',
