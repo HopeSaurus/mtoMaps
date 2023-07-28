@@ -120,6 +120,7 @@ a:link, a:visited{
     Checkbox Styling
 */
 .categories-container{
+    width: 100%;
     position: relative;
     flex-direction: column;
     display: flex;
@@ -129,6 +130,9 @@ a:link, a:visited{
 }
 
 .categories-list__title{
+    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
     margin-bottom: 12px;
     color: #000
 }
