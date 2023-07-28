@@ -41,6 +41,13 @@ function fetch_products(){
 
     $query = new WP_Query($query_args);
 
+    $query->set('meta_query', array(
+        array(
+            'key'   => 'comunidad_nombre',
+            'value' => 'Maguey Largo',
+        ),
+    ));
+
     // Prepare the product data to send back in the Ajax response
     $products = array();
     if ($query->have_posts()) {
