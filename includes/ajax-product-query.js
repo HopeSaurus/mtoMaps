@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
                                         let currentZoom = map.getZoom();
 
                                         if(currentZoom>=17){
-                                            map.setView([markerCoords.lat ,markerCoords.lng], currentZoom);
+                                            map.flyToBounds([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
                                         }else{
                                             map.setView([markerCoords.lat ,markerCoords.lng], 17);
                                         }
