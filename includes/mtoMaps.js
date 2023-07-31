@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 
   document.addEventListener('click', function(event) {
     // Check if the click target is not a descendant of the menu element
-    if (!filtermenu.contains(event.target) && filterMenu.classList.contains('activate-menu')) {
+    if (!filterMenu.contains(event.target) && filterMenu.classList.contains('activate-menu')) {
       // Click occurred outside of the menu, do something here (e.g., close the menu, hide a dropdown, etc.)
       filterMenu.classList.remove('activate-menu');
     }
