@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
-  const filterButton = document.getElementById("filter-button");
+  const filterButton = document.getElementById('filter-button');
   
   console.log(filterMenu);
 
