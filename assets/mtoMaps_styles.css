@@ -178,7 +178,7 @@ a:link, a:visited{
 ul.subcategories-list{
     font-weight: 400;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
     gap: 10px;
