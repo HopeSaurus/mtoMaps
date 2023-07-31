@@ -140,6 +140,7 @@ a:link, a:visited{
 }
 
 .categories-container--parent-category:first-child{
+    border-style: solid;
     border-top: 2px;
     border-bottom: 2px;
     border-left: 2px;
@@ -147,11 +148,13 @@ a:link, a:visited{
     border-radius: 25px 0 0 25px;
 }
 .categories-container--parent-category:not(:first-child):not(:last-child){
+    border-style: solid;
     border-top: 2px;
     border-bottom: 2px;
 }
 
 .categories-container--parent-category:last-child{
+    border-style: solid;
     border-right: 2px;
     border-top: 2px;
     border-left: 0px;
