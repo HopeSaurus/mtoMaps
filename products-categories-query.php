@@ -13,7 +13,6 @@ function display_product_category_checkboxes() {
             echo'<div class="categories-container--parent-category">'. $parent_category .'</div>'; 
             $args = array(
                 'taxonomy' => 'product_cat',
-                'child_of' => $parent_category->term_id,
                 'hide_empty' => 1, 
             );
 
