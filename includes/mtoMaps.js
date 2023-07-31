@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
   const filterButton = document.getElementById('filter-button');
+  const filterMenu = document.querySelector('.categories-wrapper');
 
   function centerMap(){
     if(clusterBounds){
@@ -9,7 +10,7 @@ jQuery(document).ready(function($) {
   }
 
   function activateFilterMenu(){
-    alert('henlo');
+    filterMenu.classList.add('activate-menu');
   }
 
   mapCenterButton.addEventListener('click', centerMap);
