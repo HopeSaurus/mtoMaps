@@ -127,7 +127,7 @@ a:link, a:visited{
     "category1 category2"
     ;
     grid-template-columns: auto auto;
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: auto 1fr;
     justify-items: end;
     grid-auto-flow: column;
     align-content: center;
