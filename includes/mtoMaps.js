@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
-  const filterButton = document.querySelector('.categories-list__title');
-  const filterMenu = document.querySelector('.categories-wrapper');
+  const filterButton = document.querySelector(".categories-list__title");
+  const filterMenu = document.querySelector(".categories-wrapper");
 
   function centerMap(){
     if(clusterBounds){
@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
   }
 
   function activateFilterMenu(){
+    console.log('im getting clicked');
     filterMenu.classList.add('activate-menu');
   }
 
