@@ -10,7 +10,7 @@ function display_product_category_checkboxes() {
     if(!empty($parent_categories)){
         echo '<div class="categories-container">';
         foreach($parent_categories as $parent_category){
-            echo'<div class="categories-container--parent-category">'. $parent_category .'</div>'; 
+            echo'<div class="categories-container--parent-category">'. $parent_category->name .'</div>'; 
             $args = array(
                 'taxonomy' => 'product_cat',
                 'parent' => $parent_category->term_id,
