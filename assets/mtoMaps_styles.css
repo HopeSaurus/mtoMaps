@@ -126,7 +126,7 @@ a:link, a:visited{
     grid-auto-flow: column;
     grid-template-areas: 
     "filter"
-    ""
+
     ;
     justify-content: center;
     align-content: center;
