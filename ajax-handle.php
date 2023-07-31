@@ -14,7 +14,7 @@ function fetch_products(){
     $categories = $_POST['categories'];
 
     $sanitized_categories = array();
-    
+
     foreach ($categories as $category) {
         $sanitized_category = sanitize_text_field($category);
         if(term_exists($sanitized_category)){
@@ -42,13 +42,6 @@ function fetch_products(){
 
     $query = new WP_Query($query_args);
 
-    $query->set('meta_query', array(
-        'relation' => 'AND',
-        array(
-            'key'   => 'comunidad_nombre',
-            'value' => 'Maguey Largo',
-        ),
-    ));
 
     // Prepare the product data to send back in the Ajax response
     $products = array();

@@ -1,14 +1,15 @@
 <?php
 // Function to display product category checkboxes
 function display_product_category_checkboxes() {
+    
+    $filter_img_url = plugins_url('/',__FILE__) . '/assets/filtro.png';
+
     $args = array(
         'taxonomy' => 'product_cat',
         'hide_empty' => true,
     );
 
     $categories = get_terms($args);
-
-    $filter_img_url = plugins_url('/',__FILE__) . '/assets/filtro.png';
 
     if (!empty($categories)) {
         echo '<div class="categories-container">';
