@@ -126,11 +126,18 @@ a:link, a:visited{
     grid-auto-flow: column;
     grid-template-areas: 
     "filter"
-
+    "category1 category2"
     ;
     justify-content: center;
     align-content: center;
     padding-bottom: 10px;
+}
+
+.subcategory-list:nth-child(1){
+    grid-area: "category1";
+}
+.subcategory-list:nth-child(2){
+    grid-area: "category2";
 }
 
 .categories-list__title{
@@ -150,7 +157,7 @@ a:link, a:visited{
 }
 
 ul.subcategories-list{
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     display: flex;
     flex-direction: column;
