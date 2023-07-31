@@ -165,13 +165,13 @@ jQuery(document).ready(function($) {
     
     function showNoProducts(){
         const noProductsMessage = document.getElementById('map-message');
-        noProductsMessage.classList.remove('hide-div')
+        noProductsMessage.classList.remove('hide-div');
     }
     
     function hideNoProducts(){
         const noProductsMessage = document.getElementById('map-message');
         if(!noProductsMessage.classList.contains('hide-div')){
-            noProductsMessage.classList.add('hide-div')
+            noProductsMessage.classList.add('hide-div');
         }
     }
     

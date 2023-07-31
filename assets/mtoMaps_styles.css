@@ -131,6 +131,7 @@ a:link, a:visited{
     justify-items: end;
     align-content: center;
     padding-bottom: 10px;
+    background-color: white;
 }
 
 .categories-wrapper{
@@ -156,7 +157,7 @@ a:link, a:visited{
 }
 
 .activate-menu{
-    opacity: 1.0;
+    opacity: 1.0 !important;
 }
 
 .deactivate-menu{
@@ -193,6 +194,7 @@ ul.subcategories-list{
 
 ul.subcategories-list > li{
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
 }
 
@@ -208,9 +210,6 @@ ul.subcategories-list > li > label{
     user-select: none;
 }
 
-ul.subcategories-list > li:hover{
-
-}
 
 .subcategories-list__search-controls{
     justify-self: end;
