@@ -12,7 +12,18 @@ jQuery(document).ready(function($) {
   function activateFilterMenu(){
     if(filterMenu.classList.contains('activate-menu')){
       filterMenu.classList.remove('activate-menu');
-    }else filterMenu.classList.add('activate-menu');
+      document.removeEventListener('click', clickOutsideFilterMenu);
+    }else {
+      document.addEventListener('click', clickOutsideFilterMenu);
+      filterMenu.classList.add('activate-menu');
+    }
+  }
+
+  function clickOutsideFilterMenu(event) {
+    if (!filterMenu.contains(event.target) && event.target !== filterButton && filterMenu.classList.contains('activate-menu')) {
+      filterMenu.classList.remove('activate-menu');
+      document.removeEventListener('click', clickOutsideFilterMenu);
+    }
   }
 
   mapCenterButton.addEventListener('click', centerMap);
