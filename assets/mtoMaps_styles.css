@@ -126,16 +126,16 @@ a:link, a:visited{
     "filter filter"
     "category1 category2"
     ;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     grid-template-rows: 70px 1fr;
     justify-items: end;
     grid-auto-flow: column;
     align-content: center;
     padding-bottom: 10px;
-    direction: rtl;
 }
 
 .categories-container--parent-category{
+    padding: 5px;
     font-weight: bold;
     border-style: solid;
     border-color: #7A7A7A4A;
@@ -155,7 +155,6 @@ a:link, a:visited{
 .categories-container--parent-category:last-child{
     border-style: solid;
     border-left: 0px;
-    border-right: 2px;
     border-radius: 0 25px 25px 0;
 }
 
