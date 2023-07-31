@@ -135,10 +135,21 @@ a:link, a:visited{
 }
 
 .categories-container--parent-category{
+    opacity: 0;
+    position: absolute;
     padding: 5px;
     font-weight: bold;
     border-style: solid;
     border-color: #7A7A7A4A;
+    transition: 0.5s;
+}
+
+.activate-menu{
+    opacity: 1.0;
+}
+
+.deactivate-menu{
+    opacity: 0;
 }
 
 .categories-container--parent-category:nth-child(2){
