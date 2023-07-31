@@ -14,6 +14,7 @@ function fetch_products(){
     $categories = $_POST['categories'];
 
     $sanitized_categories = array();
+    
     foreach ($categories as $category) {
         $sanitized_category = sanitize_text_field($category);
         if(term_exists($sanitized_category)){
