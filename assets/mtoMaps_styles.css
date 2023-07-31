@@ -124,7 +124,7 @@ a:link, a:visited{
     position: relative;
     display: inline-grid;
     grid-template-areas: 
-    "filter"
+    "filter filter"
     "category1 category2"
     ;
     grid-template-columns: 1fr 1fr;
