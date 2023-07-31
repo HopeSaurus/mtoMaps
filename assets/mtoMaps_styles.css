@@ -131,11 +131,12 @@ a:link, a:visited{
     justify-items: end;
     align-content: center;
     padding-bottom: 10px;
+    width: max(30%,300px);
 }
 
 .categories-wrapper{
     position: absolute;
-    transform: translate(0, -10px) ;
+    transform: translate(0, -25px) ;
     top:0;
     right:0;
     opacity: 0;
