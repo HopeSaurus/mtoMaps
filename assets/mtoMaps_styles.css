@@ -127,6 +127,8 @@ a:link, a:visited{
     "filter"
     "category1 category2"
     ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 1fr;
     justify-content: center;
     align-content: center;
     padding-bottom: 10px;
@@ -136,10 +138,10 @@ a:link, a:visited{
     font-weight: bold;
 }
 
-.subcategory-list:nth-child(1){
+.categories-container--parent-category:nth-child(1){
     grid-area: "category1";
 }
-.subcategory-list:nth-child(2){
+.categories-container--parent-category:nth-child(2){
     grid-area: "category2";
 }
 
@@ -160,6 +162,7 @@ a:link, a:visited{
 }
 
 ul.subcategories-list{
+    font-weight: 400;
     align-items: flex-start;
     justify-content: center;
     display: flex;
