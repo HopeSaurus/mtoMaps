@@ -123,7 +123,6 @@ a:link, a:visited{
     width: 100%;
     position: relative;
     display: inline-grid;
-    grid-auto-flow: column;
     grid-template-areas: 
     "filter"
     "category1 category2"
@@ -131,6 +130,10 @@ a:link, a:visited{
     justify-content: center;
     align-content: center;
     padding-bottom: 10px;
+}
+
+.categories-container--parent-category{
+    font-weight: bold;
 }
 
 .subcategory-list:nth-child(1){
