@@ -1,6 +1,6 @@
 <?php
 // Function to display product category checkboxes
-function display_product_category_checkboxes($parent_categories) {
+function display_product_category_checkboxes() {
     $args = array(
         'taxonomy' => 'product_cat',
         'hide_empty' => true,
