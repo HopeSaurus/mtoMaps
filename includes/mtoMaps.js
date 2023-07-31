@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
   const filterButton = document.querySelector('categories-list__title');
-  const filterMenu = document.querySelectorAll('categories-container--parent-category');
+  const filterMenu = document.querySelectorAll('subcategories-wrapper');
 
   function centerMap(){
     if(clusterBounds){
