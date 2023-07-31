@@ -129,6 +129,7 @@ a:link, a:visited{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 70px 1fr;
     justify-items: end;
+    grid-auto-flow: column;
     align-content: center;
     padding-bottom: 10px;
 }
@@ -139,7 +140,7 @@ a:link, a:visited{
     border-color: #7A7A7A4A;
 }
 
-.categories-container--parent-category:first-child{
+.categories-container--parent-category:nth-child(2){
     border-style: solid;
     border-top: 2px;
     border-bottom: 2px;
@@ -147,7 +148,7 @@ a:link, a:visited{
     border-right: 0px;
     border-radius: 25px 0 0 25px;
 }
-.categories-container--parent-category:not(:first-child):not(:last-child){
+.categories-container--parent-category:not(:nth-child(2)):not(:last-child){
     border-style: solid;
     border-top: 2px;
     border-bottom: 2px;
