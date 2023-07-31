@@ -25,7 +25,12 @@ function display_product_category_checkboxes() {
                 foreach($subcategories as $subcategory){
                     echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $subcategory->slug . '"> ' . $subcategory->name . '</label></li>';
                 }
-                echo '<li><label><div class="clean-checkboxes" >Limpiar</div></label></li>';
+                if($parent_category === array_key_last($parent_categories)){
+                    echo '<li class="subcategories-list__search-controls">';
+                    echo '<label><div class="clean-checkboxes" >Limpiar</div></label>';
+                    echo '<label><div class="search-categories" >Buscar</div></label>';
+                    echo '</li>';
+                }
                 echo '</ul>';
                 echo '</div>';
             }
