@@ -135,6 +135,7 @@ a:link, a:visited{
 
 .categories-wrapper{
     position: absolute;
+    transform: translate(0, -10px) ;
     top:0;
     right:0;
     opacity: 0;
