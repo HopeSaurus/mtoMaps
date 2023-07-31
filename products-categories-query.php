@@ -3,7 +3,6 @@
 function display_product_category_checkboxes($parent_categories) {
     $args = array(
         'taxonomy' => 'product_cat',
-        'child_of' => $parent_categories,
         'hide_empty' => true,
     );
 
