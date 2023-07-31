@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
   }
 
   function activateFilterMenu(){
-    alert(henlo);
+    alert('henlo');
   }
 
   mapCenterButton.addEventListener('click', centerMap);
