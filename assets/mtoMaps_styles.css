@@ -135,13 +135,28 @@ a:link, a:visited{
 
 .categories-container--parent-category{
     font-weight: bold;
+    border-style: solid;
+    border-color: #7A7A7A4A;
 }
 
-.categories-container--parent-category:nth-child(1){
-    grid-area: category1;
+.categories-container--parent-category:first-child{
+    border-top: 2px;
+    border-bottom: 2px;
+    border-left: 2px;
+    border-right: 0px;
+    border-radius: 25px 0 0 25px;
 }
-.categories-container--parent-category:nth-child(2){
-    grid-area: category2;
+.categories-container--parent-category:not(:first-child):not(:last-child){
+    border-top: 2px;
+    border-bottom: 2px;
+}
+
+.categories-container--parent-category:last-child{
+    border-right: 2px;
+    border-top: 2px;
+    border-left: 0px;
+    border-right: 2px;
+    border-radius: 0 25px 25px 0;
 }
 
 .categories-list__title{
