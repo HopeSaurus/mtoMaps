@@ -204,8 +204,8 @@ jQuery(document).ready(function($) {
     }
 
     function reCenterMap(){
-        map.flyToBounds(clusterBounds, {
-            animate: false
+        map.fitBounds(clusterBounds, {
+            padding: [50,50]
         });
     }
 

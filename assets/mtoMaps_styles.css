@@ -122,9 +122,8 @@ a:link, a:visited{
 .categories-container{
     width: 100%;
     position: relative;
-    display: grid;
+    display: inline-grid;
     grid-auto-flow: column;
-    direction: rtl;
     justify-content: center;
     align-content: center;
     padding-bottom: 10px;
