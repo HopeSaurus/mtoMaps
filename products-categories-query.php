@@ -8,8 +8,8 @@ function display_product_category_checkboxes() {
 
 
     if(!empty($parent_categories)){
-        echo '<div class="categories-list__title"><img src=' . $filter_img_url . '></img>Filtrar</div>';
         echo '<div class="categories-container">';
+        echo '<div class="categories-list__title"><img src=' . $filter_img_url . '></img>Filtrar</div>';
         foreach($parent_categories as $parent_category){
             echo'<div class="categories-container--parent-category">'. $parent_category->name .'</div>'; 
             $args = array(
