@@ -139,14 +139,14 @@ a:link, a:visited{
 }
 
 .categories-container--parent-category:nth-child(1){
-    grid-area: "category1";
+    grid-area: category1;
 }
 .categories-container--parent-category:nth-child(2){
-    grid-area: "category2";
+    grid-area: category2;
 }
 
 .categories-list__title{
-    grid-area: "filter";
+    grid-area: filter;
     display: flex;
     cursor: pointer;
     gap: 5px;
