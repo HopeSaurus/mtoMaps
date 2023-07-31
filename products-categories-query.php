@@ -34,9 +34,9 @@ function display_product_category_checkboxes() {
                 }
                 echo '</div>';
                 echo '</ul>';
-                echo '</div>';
             }
         }
+        echo '</div>';
         echo '</div>';
     }
 
