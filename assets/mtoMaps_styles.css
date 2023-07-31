@@ -129,12 +129,11 @@ a:link, a:visited{
     grid-template-columns: auto auto;
     grid-template-rows: auto 1fr;
     justify-items: end;
-    grid-auto-flow: column;
     align-content: center;
     padding-bottom: 10px;
 }
 
-.subcategories-wrapper{
+.categories-wrapper{
     grid-area: categories;
     display: grid;
     grid-template-columns: auto auto;
@@ -142,11 +141,13 @@ a:link, a:visited{
 }
 
 .categories-container--parent-category{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 5px;
     font-weight: bold;
     border-style: solid;
     border-color: #7A7A7A4A;
-    transition: 0.5s;
 }
 
 .activate-menu{
