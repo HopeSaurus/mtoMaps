@@ -158,6 +158,7 @@ a:link, a:visited{
 
 .activate-menu{
     opacity: 1.0 !important;
+    transform: translate(0);
 }
 
 .deactivate-menu{
