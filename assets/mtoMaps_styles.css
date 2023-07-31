@@ -137,8 +137,7 @@ a:link, a:visited{
     grid-area: categories;
     display: grid;
     grid-template-columns: auto auto;
-    grid-auto-flow: rows;
-    border-style: 4px solid #7A7A7A4A;
+    border: 4px solid #7A7A7A4A;
     border-radius: 15px;
 }
 
