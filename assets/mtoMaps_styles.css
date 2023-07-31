@@ -196,6 +196,7 @@ ul.subcategories-list{
 ul.subcategories-list > li{
     display: flex;
     flex-wrap: nowrap;
+    flex-shrink: 0;
     align-items: center;
 }
 
