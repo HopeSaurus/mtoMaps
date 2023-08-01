@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
 
-        if(Object.keys(totalClusterGroup)<=0){
+        if(Object.keys(totalClusterGroup)>=0){
             totalClusterGroup.removeLayers();
         }
 
