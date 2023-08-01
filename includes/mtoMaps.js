@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
   }
 
   function clickOutsideFilterMenu(event) {
-    if ((!filterMenu.contains(event.target) || !filterButton.contains(event.target) || !filterImg.contains(event.target) ) && (event.target !== filterButton) && filterMenu.classList.contains('activate-menu')) {
+    if ((!filterMenu.contains(event.target) || !filterButton.contains(event.target) || !filterImg.contains(event.target) ) && (event.target !== filterButton || event.target !== filterImg ) && filterMenu.classList.contains('activate-menu')) {
       filterMenu.classList.remove('activate-menu');
       document.removeEventListener('click', clickOutsideFilterMenu);
     }
