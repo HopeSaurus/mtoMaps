@@ -5,7 +5,9 @@ jQuery(document).ready(function($) {
 
   function centerMap(){
     if(clusterBounds){
-      reCenterMap();
+      map.fitBounds(clusterBounds, {
+        padding: [50,50]
+    });
     }
   }
 
@@ -14,8 +16,8 @@ jQuery(document).ready(function($) {
       filterMenu.classList.remove('activate-menu');
       document.removeEventListener('click', clickOutsideFilterMenu);
     }else {
-      document.addEventListener('click', clickOutsideFilterMenu);
       filterMenu.classList.add('activate-menu');
+      document.addEventListener('click', clickOutsideFilterMenu);
     }
   }
 
