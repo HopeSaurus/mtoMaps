@@ -13,7 +13,7 @@ function display_product_category_checkboxes() {
         echo '<div id="filter-button" class="categories-list__title"><img src=' . $filter_img_url . '></img>Filtrar</div>';
         echo '<div class="categories-wrapper">';
         foreach($parent_categories as $parent_category){
-            echo '<script>parentCategories.push('.$parent_category->slug.');</script>';
+            echo '<script>parentCategories.push("' . $parent_category->slug . '");</script>';
             echo'<div class="categories-container--parent-category">'. $parent_category->name .':'; 
             $args = array(
                 'taxonomy' => 'product_cat',
