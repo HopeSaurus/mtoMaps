@@ -68,7 +68,10 @@ jQuery(document).ready(function($) {
             }
         });
         console.log('selected categories: ',selectedCategories);
-        // Once all the checkboxes are counted, check if some parent category all-checkboxes are empty
+
+        // Now that we know which categories to display, lets see which products to display now
+
+        filterProducts();
 
     }
 
@@ -108,21 +111,7 @@ jQuery(document).ready(function($) {
             noProductsMessage.classList.add('hide-div');
         }
     }
-    
-    function removeCategories(categoriesToRemove){
-        showLoading();
-        categoriesToRemove.forEach(function(category){
-    
-            totalClusterGroup.removeLayer(markerCategoryGroups[category]);
-            //markerCategoryGroups[category].clearLayers();
-            delete markerCategoryGroups[category];
-        });
-        hideLoading();
-        updateBounds();
-        closePopUps();
-        reCenterMap();
-    }
-    
+     
     function updateBounds(){
         if(Object.keys(markerCategoryGroups)!=0){
     
@@ -147,11 +136,11 @@ jQuery(document).ready(function($) {
         map.closePopup();
     }
 
-    function selectProducts(){
+    function filterProducts(){
         products.forEach(function(product){
-            console.log('product info: ', product);
+            console.log(product);
             product.categories.forEach(function(category){
-                console.log('categories info: ',category);
+
             });
         });
     }
