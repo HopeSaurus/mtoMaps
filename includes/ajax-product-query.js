@@ -164,8 +164,7 @@ jQuery(document).ready(function($) {
         if(markersToAdd.length === 0){
             //showNoProducts();
         }else{
-            console.log(markersToAdd);
-            markersToAdd.forEach(addMarkers(marker));
+            markersToAdd.forEach((marker) => addMarkers(marker));
         }
     }
 
