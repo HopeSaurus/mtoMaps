@@ -162,48 +162,56 @@ jQuery(document).ready(function($) {
         if(markersToAdd.length === 0){
             showNoProducts();
         }else{
-            markersToAdd.forEach((marker) => addMarkers(marker));
-            totalClusterGroup.addLayer(markerCluster);
+            addMarkers(markersToAdd);
         }
         updateBounds();
         reCenterMap();
     }
 
-    function addMarkers(product){
-        console.log(product);
-        let latitude = product.latitude;
-        let longitude = product.longitude;
+    function addMarkers(products){
 
-        if(latitude && longitude ){
 
-            marker = L.marker([latitude,longitude]);
+        products.forEach(function(product){
 
-            marker.bindPopup(`<div class="map__popup">
-                                <a class="map__popup-linkarea" href="${product.link}"> 
-                                    <img src="${product.thumbnail_url}" alt="${product.title}"></img>
-                                    <div class="map__popup-title">${product.title}</div>
-                                    <div class="map__popup-subtitle">${product.location}</div>
-                                </a> 
-                            </div>
-                            `);
-
-            marker.on('click', function(e) {
-                let markerCoords = this.getLatLng();
-                let currentZoom = map.getZoom();
-
-                if(currentZoom>=17){
-                    map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
-                }else{
-                    map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
-                }
-                this.openPopup();
-
+            let markerCluster = L.markerClusterGroup({
+                showCoverageOnHover: false,
             });
-            markerCluster.addLayer(marker);
 
-        }else{
-            console.log(`Ignoring product with the id: ${product.ID}`);
-        }
+            let latitude = product.latitude;
+            let longitude = product.longitude;
+
+            if(latitude && longitude ){
+
+                marker = L.marker([latitude,longitude]);
+
+                marker.bindPopup(`<div class="map__popup">
+                                    <a class="map__popup-linkarea" href="${product.link}"> 
+                                        <img src="${product.thumbnail_url}" alt="${product.title}"></img>
+                                        <div class="map__popup-title">${product.title}</div>
+                                        <div class="map__popup-subtitle">${product.location}</div>
+                                    </a> 
+                                </div>
+                                `);
+
+                marker.on('click', function(e) {
+                    let markerCoords = this.getLatLng();
+                    let currentZoom = map.getZoom();
+
+                    if(currentZoom>=17){
+                        map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
+                    }else{
+                        map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
+                    }
+                    this.openPopup();
+
+                });
+                markerCluster.addLayer(marker);
+
+            }else{
+                console.log(`Ignoring product with the id: ${product.ID}`);
+            }
+        });
+        totalClusterGroup.addLayer(markerCluster);
     }
 
 });
