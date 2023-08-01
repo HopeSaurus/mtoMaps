@@ -147,6 +147,7 @@ a:link, a:visited{
     z-index: 9998;
     transition: 0.5s;
     background-color: white;
+    pointer-events: none; 
 }
 
 .categories-container--parent-category{
@@ -159,6 +160,7 @@ a:link, a:visited{
 
 .activate-menu{
     opacity: 1.0 !important;
+    pointer-events: auto;
     transform: translate(0);
 }
 

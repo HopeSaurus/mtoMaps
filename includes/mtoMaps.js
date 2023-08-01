@@ -1,3 +1,5 @@
+//TODO avoid clicking the menu until is visible
+
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
   const filterButton = document.getElementById('filter-button');
