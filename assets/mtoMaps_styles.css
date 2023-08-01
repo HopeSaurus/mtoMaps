@@ -180,9 +180,18 @@ a:link, a:visited{
     z-index: 9999;
 }
 
+.categories-list__title:hover img{
+    border-color: rga(255,0,0,0.8);
+}
+
+.categories-list__title:hover{
+    text-decoration: underline;
+}
+
 #mtoMap .categories-list__title img{
     border-radius: 10px;
     border: 2px solid red;
+    transition: 0.2s;
 }
 
 ul.subcategories-list{
