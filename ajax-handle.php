@@ -11,6 +11,7 @@ function fetch_products(){
         wp_send_json_error('Invalid nonce.');
     }
     
+    /*
     $categories = $_POST['categories'];
 
     $sanitized_categories = array();
@@ -25,12 +26,13 @@ function fetch_products(){
             }
         }
     }
-
+    */
     $query_args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
     );
 
+    /*
     if (!empty($sanitized_categories)) {
         $query_args['tax_query'] = array(
             array(
@@ -41,7 +43,7 @@ function fetch_products(){
             ),
         );
     }
-
+    */
     $query = new WP_Query($query_args);
 
 
