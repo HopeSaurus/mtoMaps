@@ -137,10 +137,8 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
 
-        if(Object.keys(totalClusterGroup)>=0){
             totalClusterGroup.clearMarkers();
             console.log('cluster group', totalClusterGroup);
-        }
 
         products.forEach(function(product){
             matches = [];
