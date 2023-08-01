@@ -136,9 +136,9 @@ jQuery(document).ready(function($) {
         let markersToAdd = [];
         let matches=[];
         let acc;
+        totalClusterGroup = {};
 
-            totalClusterGroup.clearMarkers();
-            console.log('cluster group', totalClusterGroup);
+        hideNoProducts();
 
         products.forEach(function(product){
             matches = [];
@@ -160,7 +160,7 @@ jQuery(document).ready(function($) {
         });
 
         if(markersToAdd.length === 0){
-            //showNoProducts();
+            showNoProducts();
         }else{
             markersToAdd.forEach((marker) => addMarkers(marker));
         }
