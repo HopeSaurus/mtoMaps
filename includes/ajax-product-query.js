@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
         parentCategories.forEach(function(category){
             selectedCategories[category]= [];
         });
-        console.log(selectedCategories);
+        console.log('selected categories',selectedCategories);
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
             // Get the category name from the data-category-name attribute
@@ -154,7 +154,6 @@ jQuery(document).ready(function($) {
     }
 
     function selectProducts(){
-        console.log(parentCategories);
         products.forEach(function(product){
             console.log('product info: ', product);
             product.categories.forEach(function(category){
