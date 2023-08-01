@@ -62,11 +62,7 @@ function fetch_products(){
                 'latitude' => get_post_meta($product_id, 'latitud', true),
                 'longitude' => get_post_meta($product_id, 'longitud', true)
             );
-            foreach($categories as $category){
-                $category_slug = $category->slug;
-                if(in_array($category_slug,$sanitized_categories))
-                    $products[$category_slug][] = $product_data;
-            }
+            $products[] = $product_data;
         }
         wp_reset_postdata();
     }

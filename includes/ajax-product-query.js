@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
+    let products = [];
     // Function to perform the Ajax request
     function getProductsByCategories(categoriesToDisplay) {
 
@@ -25,57 +26,7 @@ jQuery(document).ready(function($) {
                         showNoProducts();
                     }
                     else{
-
-                        categoriesToDisplay.forEach(function(category){
-    
-                            let categoryMarkers = L.markerClusterGroup({
-                                showCoverageOnHover: false,
-                            });
-    
-                            const products = response.data[category];
-    
-                            products.forEach(function(product){
-    
-                                let latitude = product.latitude;
-                                let longitude = product.longitude;
-    
-                                if(latitude && longitude ){
-    
-                                    marker = L.marker([latitude,longitude]);
-    
-                                    marker.bindPopup(`<div class="map__popup">
-                                                        <a class="map__popup-linkarea" href="${product.link}"> 
-                                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img>
-                                                            <div class="map__popup-title">${product.title}</div>
-                                                            <div class="map__popup-subtitle">${product.location}</div>
-                                                        </a> 
-                                                    </div>
-                                                    `);
-    
-                                    marker.on('click', function(e) {
-                                        let markerCoords = this.getLatLng();
-                                        let currentZoom = map.getZoom();
-
-                                        if(currentZoom>=17){
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
-                                        }else{
-                                            map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
-                                        }
-                                        this.openPopup();
-
-                                    });
-                                    categoryMarkers.addLayer(marker);
-    
-                                }else{
-                                    console.log(`Ignoring product with the id: ${product.ID}`);
-                                }
-                            });
-                            markerCategoryGroups[category] = categoryMarkers;
-                            totalClusterGroup.addLayer(markerCategoryGroups[category]);
-                            updateBounds();
-                            closePopUps();
-                            reCenterMap();
-                        });
+                        products = response.data;
                     }  
                 }
                 else{
@@ -90,14 +41,15 @@ jQuery(document).ready(function($) {
         });
     }
 
+    // First thing to do: Fetch everything and forget about ajax, Empty string will look for all products
+    getProductsByCategories([]);
+    // This will initialize the response data and store it, response data is an array of objects, we will call them products.
+
     // Function to handle checkbox click events
+    // Our logic will depend on the checkboxes state.
     function handleCheckboxClick() {
         // Clear the selected categories array
         selectedCategories = [];
-        //Check which categories are displayed or not 
-        let categoriesDisplayedOnMap = Object.keys(markerCategoryGroups);
-        let categoriesToRemove = [];
-        let categoriesToDisplay = [];
 
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
@@ -118,23 +70,9 @@ jQuery(document).ready(function($) {
             });
         }
 
-            categoriesToRemove = categoriesDisplayedOnMap.filter(function(category){
-
-                return !selectedCategories.includes(category);
-
-            });
-
-            categoriesToDisplay = selectedCategories.filter(function(category){
-
-                return !categoriesDisplayedOnMap.includes(category);
-
-            });
-
-        //Do not need to call ajax if theres only categories to remove 
-        categoriesToRemove.length!=0? removeCategories(categoriesToRemove) : "" ;
-
-        //Only call ajax if theres categories to add
-        categoriesToDisplay.length!=0? getProductsByCategories(categoriesToDisplay) : "" ;
+        // We don't need to know which was added or removed now
+        // We just need to loop through the products searching the ones that possess the categories selected.
+        selectProducts();
 
     }
 
@@ -150,8 +88,6 @@ jQuery(document).ready(function($) {
     $('input[type="checkbox"]').on('change', handleCheckboxClick);
     $('.clean-checkboxes').on('click', cleanCheckboxes);
 
-    // On page load, call the Ajax function to retrieve all products by default
-    //getProductsByCategories();
 
     function showLoading(){
         const loadingScreen = document.getElementById('loading-screen');
@@ -213,7 +149,50 @@ jQuery(document).ready(function($) {
         map.closePopup();
     }
 
-    handleCheckboxClick();
+    function selectProducts(){
+        products.forEach(function(product){
+            console.log('product info: ', product);
+            product.categories.forEach(function(category){
+                console.log('categories info: ',category);
+            });
+        });
+    }
+
+    function addMarkers(product){
+        let latitude = product.latitude;
+        let longitude = product.longitude;
+
+        if(latitude && longitude ){
+
+            marker = L.marker([latitude,longitude]);
+
+            marker.bindPopup(`<div class="map__popup">
+                                <a class="map__popup-linkarea" href="${product.link}"> 
+                                    <img src="${product.thumbnail_url}" alt="${product.title}"></img>
+                                    <div class="map__popup-title">${product.title}</div>
+                                    <div class="map__popup-subtitle">${product.location}</div>
+                                </a> 
+                            </div>
+                            `);
+
+            marker.on('click', function(e) {
+                let markerCoords = this.getLatLng();
+                let currentZoom = map.getZoom();
+
+                if(currentZoom>=17){
+                    map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
+                }else{
+                    map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
+                }
+                this.openPopup();
+
+            });
+            categoryMarkers.addLayer(marker);
+
+        }else{
+            console.log(`Ignoring product with the id: ${product.ID}`);
+        }
+    }
 
 });
 
