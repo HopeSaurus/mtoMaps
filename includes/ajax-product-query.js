@@ -42,7 +42,6 @@ jQuery(document).ready(function($) {
     }
 
     // First thing to do: Fetch everything and forget about ajax, Empty string will look for all products
-    getProductsByCategories(selectedCategories);
     // This will initialize the response data and store it, response data is an array of objects, we will call them products.
 
     // Function to handle checkbox click events
@@ -69,6 +68,8 @@ jQuery(document).ready(function($) {
 
             });
         }
+
+        getProductsByCategories(selectedCategories);
 
         // We don't need to know which was added or removed now
         // We just need to loop through the products searching the ones that possess the categories selected.
