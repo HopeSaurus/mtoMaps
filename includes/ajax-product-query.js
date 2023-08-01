@@ -75,8 +75,6 @@ jQuery(document).ready(function($) {
         //     totalClusterGroup.removeLayers();
         // }
         filterProducts();
-        //updateBounds();
-        //reCenterMap();
     }
 
     function cleanCheckboxes(){
@@ -166,6 +164,8 @@ jQuery(document).ready(function($) {
         }else{
             markersToAdd.forEach((marker) => addMarkers(marker));
         }
+        updateBounds();
+        reCenterMap();
     }
 
     function addMarkers(product){
