@@ -70,9 +70,10 @@ jQuery(document).ready(function($) {
         console.log('selected categories: ',selectedCategories);
 
         // Now that we know which categories to display, lets see which products to display now
-
+        totalClusterGroup.removeLayers();
         filterProducts();
-
+        updateBounds();
+        reCenterMap();
     }
 
     handleCheckboxClick();
@@ -113,11 +114,11 @@ jQuery(document).ready(function($) {
     }
      
     function updateBounds(){
-        if(Object.keys(markerCategoryGroups)!=0){
+        if(Object.keys(selectedCategories)!=0){
     
             clusterBounds = totalClusterGroup.getBounds();
     
-        }else if (Object.keys(markerCategoryGroups)==0){
+        }else if (Object.keys(selectedCategories)==0){
             
             clusterBounds = bounds; 
 
@@ -137,12 +138,29 @@ jQuery(document).ready(function($) {
     }
 
     function filterProducts(){
+        let markersToAdd = [];
+        let matches=[];
+        let acc;
         products.forEach(function(product){
-            console.log(product);
             product.categories.forEach(function(category){
-
+                acc = 0;
+                selectedCategories.forEach(function(parentCategory){
+                    if(selectedCategories[parentCategory].includes(category)){
+                        acc++;
+                    }
+                });
+                matches.push(acc);
             });
+            if(!matches.includes(0)){
+                markersToAdd.push(product);
+            }
         });
+
+        if(markersToAdd.length === 0){
+            showNoProducts();
+        }else{
+            markersToAdd.forEach(addMarkers(marker));
+        }
     }
 
     function addMarkers(product){
@@ -174,7 +192,7 @@ jQuery(document).ready(function($) {
                 this.openPopup();
 
             });
-            categoryMarkers.addLayer(marker);
+            totalClusterGroup.addLayer(marker);
 
         }else{
             console.log(`Ignoring product with the id: ${product.ID}`);

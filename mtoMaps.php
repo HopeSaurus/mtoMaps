@@ -62,8 +62,6 @@ function render_leaflet_map($atts) {
         }
         ).addTo(map);
 
-        var markerCategoryGroups = {};
-        var markersIDs = {};
         let marker;
 
         var totalClusterGroup = 
