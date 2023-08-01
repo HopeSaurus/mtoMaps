@@ -48,33 +48,22 @@ jQuery(document).ready(function($) {
     // Our logic will depend on the checkboxes state.
 
     function handleCheckboxClick() {
+        let index = 0;
+        let checkboxes;
         // Clear the selected categories array
         parentCategories.forEach(function(category){
-            selectedCategories[category]= [];
-        });
-        console.log('selected categories',selectedCategories);
-        // Iterate through the checked checkboxes
-        $('input[type="checkbox"]:checked').each(function() {
-            // Get the category name from the data-category-name attribute
-            let categoryName = $(this).data('category-slug');
-            // Push the category name to the selectedCategories array
-            selectedCategories.push(categoryName);
-        });
-
-        if(selectedCategories.length==0){
-
-            $('input[type="checkbox"]:not(:checked)').each(function() {
-
-                let categoryName = $(this).data('category-slug');
-                
-                selectedCategories.push(categoryName);
-
+            checkboxes = document.querySelectorAll(`.${category}`);
+            checkboxes.forEach(checkbox=>{
+                if(checkbox.checked){
+                    selectedCategories[category]= [];
+                }
             });
-        }
+        });
 
+        console.log(selectedCategories);
         // We don't need to know which was added or removed now
         // We just need to loop through the products searching the ones that possess the categories selected.
-        selectProducts();
+        //selectProducts();
 
     }
 
