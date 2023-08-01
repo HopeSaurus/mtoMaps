@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
                     }
                     else{
                         products = response.data;
+                        handleCheckboxClick();
                     }  
                 }
                 else{
@@ -77,8 +78,6 @@ jQuery(document).ready(function($) {
         //updateBounds();
         //reCenterMap();
     }
-
-    handleCheckboxClick();
 
     function cleanCheckboxes(){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -171,6 +170,7 @@ jQuery(document).ready(function($) {
     }
 
     function addMarkers(product){
+        console.log(product);
         let latitude = product.latitude;
         let longitude = product.longitude;
 
