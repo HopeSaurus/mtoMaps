@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
-    let selectedCategories = [];
+    let selectedCategories = {};
     var products = [];
     // Function to perform the Ajax request
     function getProductsByCategories() {
@@ -53,9 +53,10 @@ jQuery(document).ready(function($) {
         // Clear the selected categories array
         parentCategories.forEach(function(category){
             checkboxes = document.querySelectorAll(`.${category}`);
+            console.log(checkboxes);
             checkboxes.forEach(checkbox=>{
                 if(checkbox.checked){
-                    selectedCategories[category]= [];
+                    selectedCategories[category] = checkbox.dataset.categorySlug;
                 }
             });
         });
