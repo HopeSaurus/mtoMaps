@@ -70,9 +70,9 @@ jQuery(document).ready(function($) {
         console.log('selected categories: ',selectedCategories);
 
         // Now that we know which categories to display, lets see which products to display now
-        if(Object.keys(totalClusterGroup)!=0){
-            totalClusterGroup.removeLayers();
-        }
+        // if(Object.keys(totalClusterGroup)!=0){
+        //     totalClusterGroup.removeLayers();
+        // }
         filterProducts();
         updateBounds();
         reCenterMap();
