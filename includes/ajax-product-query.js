@@ -137,7 +137,9 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
 
-        totalClusterGroup.removeLayer(clusterGroupPointer);
+        if(clusterGroupPointer){
+            totalClusterGroup.removeLayer(clusterGroupPointer);
+        }
         hideNoProducts();
 
         products.forEach(function(product){
