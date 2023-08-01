@@ -163,8 +163,9 @@ jQuery(document).ready(function($) {
         });
 
         if(markersToAdd.length === 0){
-            showNoProducts();
+            //showNoProducts();
         }else{
+            console.log(markersToAdd);
             markersToAdd.forEach(addMarkers(marker));
         }
     }
