@@ -63,7 +63,7 @@ function render_leaflet_map($atts) {
         ).addTo(map);
 
         let marker;
-        let markerCluster = L.markerClusterGroup({
+        let totalClusterGroup = L.markerClusterGroup({
             showCoverageOnHover: false,
         });
 
