@@ -138,7 +138,7 @@ jQuery(document).ready(function($) {
         let acc;
 
         if(Object.keys(totalClusterGroup)>=0){
-            totalClusterGroup.removeLayers();
+            totalClusterGroup.clearLayers();
         }
 
         products.forEach(function(product){
