@@ -55,7 +55,6 @@ function fetch_products(){
             $product_id = get_the_ID();
             $thumbnail_id = get_post_thumbnail_id($product_id);
             //$categories = getCategoriesSlug($product_id);
-            echo $categories;
             // Retrieve and store relevant product data
             $product_data = array(
                 'ID' => $product_id,
