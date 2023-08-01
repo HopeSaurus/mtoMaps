@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
             method: 'POST',
             data: {
                 action: 'fetch_products',
-                categories: categoriesToDisplay,
+                categories: [],
                 nonce: myAjax.nonce
             },
             success: function(response){

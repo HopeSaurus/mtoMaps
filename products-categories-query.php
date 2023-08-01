@@ -6,14 +6,14 @@ function display_product_category_checkboxes() {
 
     $parent_categories = get_parent_categories();
 
-    echo 'var parentCategories = [];';
+    echo '<script>var parentCategories = [];</script>';
 
     if(!empty($parent_categories)){
         echo '<div class="categories-container">';
         echo '<div id="filter-button" class="categories-list__title"><img src=' . $filter_img_url . '></img>Filtrar</div>';
         echo '<div class="categories-wrapper">';
         foreach($parent_categories as $parent_category){
-            echo 'parentCategories.push('.$parent_category->slug.');';
+            echo '<script>parentCategories.push('.$parent_category->slug.');</script>';
             echo'<div class="categories-container--parent-category">'. $parent_category->name .':'; 
             $args = array(
                 'taxonomy' => 'product_cat',
