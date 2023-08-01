@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
         //     totalClusterGroup.removeLayers();
         // }
         filterProducts();
-        updateBounds();
+        //updateBounds();
         reCenterMap();
     }
 
@@ -144,6 +144,7 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
         products.forEach(function(product){
+            matches = [];
             product.categories.forEach(function(category){
                 acc = 0;
                 selectedCategories.forEach(function(parentCategory){
@@ -154,7 +155,10 @@ jQuery(document).ready(function($) {
                 matches.push(acc);
             });
             if(!matches.includes(0)){
+                console.log("marker added",product.ID,product.categories);
                 markersToAdd.push(product);
+            }else{
+                console.log("marker not added",product.ID,product.categories);
             }
         });
 
