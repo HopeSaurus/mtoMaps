@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
   const filterButton = document.getElementById('filter-button');
   const filterMenu = document.querySelector('.categories-wrapper');
+  const filterImg = document.querySelector('#filter-button img');
 
   function centerMap(){
     if(clusterBounds){
@@ -24,7 +25,7 @@ jQuery(document).ready(function($) {
   }
 
   function clickOutsideFilterMenu(event) {
-    if (!filterMenu.contains(event.target) && event.target !== filterButton && filterMenu.classList.contains('activate-menu')) {
+    if ((!filterMenu.contains(event.target) || !filterButton.contains(event.target)) && (event.target !== filterButton || event.target !== filterMenu) && filterMenu.classList.contains('activate-menu')) {
       filterMenu.classList.remove('activate-menu');
       document.removeEventListener('click', clickOutsideFilterMenu);
     }
@@ -32,6 +33,7 @@ jQuery(document).ready(function($) {
 
   mapCenterButton.addEventListener('click', centerMap);
   filterButton.addEventListener('click', activateFilterMenu);
+  filterImg.addEventListener('click',activateFilterMenu);
 
  
 });
