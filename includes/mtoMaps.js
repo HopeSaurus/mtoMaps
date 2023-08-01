@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 
   mapCenterButton.addEventListener('click', centerMap);
   filterButton.addEventListener('click', activateFilterMenu);
-  filterImg.addEventListener('click',activateFilterMenu);
+  //filterImg.addEventListener('click',activateFilterMenu);
 
  
 });
