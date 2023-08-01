@@ -6,12 +6,14 @@ function display_product_category_checkboxes() {
 
     $parent_categories = get_parent_categories();
 
+    echo 'var parentCategories = [];';
 
     if(!empty($parent_categories)){
         echo '<div class="categories-container">';
         echo '<div id="filter-button" class="categories-list__title"><img src=' . $filter_img_url . '></img>Filtrar</div>';
         echo '<div class="categories-wrapper">';
         foreach($parent_categories as $parent_category){
+            echo 'parentCategories.push('.$parent_category->slug.');';
             echo'<div class="categories-container--parent-category">'. $parent_category->name .':'; 
             $args = array(
                 'taxonomy' => 'product_cat',
@@ -24,7 +26,7 @@ function display_product_category_checkboxes() {
             if(!empty($subcategories)){
                 echo '<ul class="subcategories-list">';
                 foreach($subcategories as $subcategory){
-                    echo '<li><label><input type="checkbox" name="product_category"  data-category-slug="' . $subcategory->slug . '"> ' . $subcategory->name . '</label></li>';
+                    echo '<li><label><input type="checkbox" class="' . $parent_category->slug . '" name="product_category"  data-category-slug="' . $subcategory->slug . '"> ' . $subcategory->name . '</label></li>';
                 }
                 if($parent_category === array_key_last($parent_categories)){
                     echo '<li class="subcategories-list__search-controls">';

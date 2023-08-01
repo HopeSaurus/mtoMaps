@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
     let selectedCategories = [];
     var products = [];
     // Function to perform the Ajax request
-    function getProductsByCategories(categoriesToDisplay) {
+    function getProductsByCategories() {
 
         showLoading();
         hideNoProducts();
@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
 
     // First thing to do: Fetch everything and forget about ajax, Empty string will look for all products
     // This will initialize the response data and store it, response data is an array of objects, we will call them products.
-
+    getProductsByCategories();
     // Function to handle checkbox click events
     // Our logic will depend on the checkboxes state.
     function handleCheckboxClick() {
@@ -68,8 +68,6 @@ jQuery(document).ready(function($) {
 
             });
         }
-
-        getProductsByCategories(selectedCategories);
 
         // We don't need to know which was added or removed now
         // We just need to loop through the products searching the ones that possess the categories selected.
@@ -153,6 +151,7 @@ jQuery(document).ready(function($) {
     }
 
     function selectProducts(){
+        console.log(parentCategories);
         products.forEach(function(product){
             console.log('product info: ', product);
             product.categories.forEach(function(category){
