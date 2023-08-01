@@ -168,14 +168,12 @@ a:link, a:visited{
 
 
 .categories-list__title{
-    position: relative;;
     grid-area: filter;
     display: flex;
     cursor: pointer;
     gap: 5px;
     justify-content: flex-end;
     align-items: center;
-    z-index: 9999;
 }
 
 #mtoMap .categories-list__title img{
