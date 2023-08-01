@@ -48,23 +48,26 @@ jQuery(document).ready(function($) {
     // Our logic will depend on the checkboxes state.
 
     function handleCheckboxClick() {
-        let index = 0;
+        //init selected categories
+        parentCategories.forEach(function(category){
+            selectedCategories[category] = [];
+        });
         let checkboxes;
         // Clear the selected categories array
         parentCategories.forEach(function(category){
             checkboxes = document.querySelectorAll(`.${category}`);
-            console.log(checkboxes);
             checkboxes.forEach(checkbox=>{
                 if(checkbox.checked){
-                    selectedCategories[category] = checkbox.dataset.categorySlug;
+                    selectedCategories[category].push(checkbox.dataset.categorySlug);
                 }
             });
+            if(selectedCategories[category].length === 0){
+                checkboxes.forEach(checkbox=>{
+                    selectedCategories[category].push(checkbox.dataset.categorySlug);
+                });
+            }
         });
-
-        console.log(selectedCategories);
-        // We don't need to know which was added or removed now
-        // We just need to loop through the products searching the ones that possess the categories selected.
-        //selectProducts();
+        // Once all the checkboxes are counted, check if some parent category all-checkboxes are empty
 
     }
 
