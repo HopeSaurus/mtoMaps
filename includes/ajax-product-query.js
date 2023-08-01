@@ -147,11 +147,11 @@ jQuery(document).ready(function($) {
             matches = [];
             product.categories.forEach(function(category){
                 acc = 0;
-                selectedCategories.forEach(function(parentCategory){
+                for (const parentCategory in selectedCategories){
                     if(selectedCategories[parentCategory].includes(category)){
                         acc++;
                     }
-                });
+                }
                 matches.push(acc);
             });
             if(!matches.includes(0)){
