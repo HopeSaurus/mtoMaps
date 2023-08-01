@@ -46,10 +46,13 @@ jQuery(document).ready(function($) {
     getProductsByCategories();
     // Function to handle checkbox click events
     // Our logic will depend on the checkboxes state.
+
     function handleCheckboxClick() {
         // Clear the selected categories array
-        selectedCategories = [];
-
+        parentCategories.forEach(function(category){
+            selectedCategories[category]= [];
+        });
+        console.log(selectedCategories);
         // Iterate through the checked checkboxes
         $('input[type="checkbox"]:checked').each(function() {
             // Get the category name from the data-category-name attribute
