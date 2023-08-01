@@ -181,7 +181,7 @@ a:link, a:visited{
 }
 
 .categories-list__title:hover img{
-    border-color: rga(255,0,0,0.8);
+    border-color: rgba(255,0,0,0.8);
 }
 
 .categories-list__title:hover{
