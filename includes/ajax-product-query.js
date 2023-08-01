@@ -170,12 +170,11 @@ jQuery(document).ready(function($) {
 
     function addMarkers(products){
 
+        let markerCluster = L.markerClusterGroup({
+            showCoverageOnHover: false,
+        });
 
         products.forEach(function(product){
-
-            let markerCluster = L.markerClusterGroup({
-                showCoverageOnHover: false,
-            });
 
             let latitude = product.latitude;
             let longitude = product.longitude;
