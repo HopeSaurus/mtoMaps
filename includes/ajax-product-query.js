@@ -136,7 +136,11 @@ jQuery(document).ready(function($) {
         let markersToAdd = [];
         let matches=[];
         let acc;
-        totalClusterGroup = {};
+
+        totalClusterGroup = 
+        L.markerClusterGroup({
+            showCoverageOnHover: false,
+        });
 
         hideNoProducts();
 
