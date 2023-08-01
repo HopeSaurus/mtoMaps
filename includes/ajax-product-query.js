@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
         // }
         filterProducts();
         //updateBounds();
-        reCenterMap();
+        //reCenterMap();
     }
 
     handleCheckboxClick();
