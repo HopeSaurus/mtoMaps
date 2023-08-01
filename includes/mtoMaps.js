@@ -1,5 +1,3 @@
-//TODO avoid clicking the menu until is visible
-
 jQuery(document).ready(function($) {
   const mapCenterButton = document.getElementById('map-center-button');
   const filterButton = document.getElementById('filter-button');
@@ -33,7 +31,5 @@ jQuery(document).ready(function($) {
 
   mapCenterButton.addEventListener('click', centerMap);
   filterButton.addEventListener('click', activateFilterMenu);
-  //filterImg.addEventListener('click',activateFilterMenu);
-
  
 });
