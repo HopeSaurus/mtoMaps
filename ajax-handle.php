@@ -56,7 +56,7 @@ function fetch_products(){
             $product_data = array(
                 'ID' => $product_id,
                 'title' => get_the_title(),
-                'categories' => $categories,
+                //'categories' => $categories,
                 'location' => get_post_meta($product_id, 'comunidad_nombre', true),
                 'link' => get_the_permalink(),
                 'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
