@@ -77,6 +77,8 @@ jQuery(document).ready(function($) {
 
     }
 
+    handleCheckboxClick();
+
     function cleanCheckboxes(){
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(function(checkbox) {

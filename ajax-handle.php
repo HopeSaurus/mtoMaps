@@ -52,13 +52,13 @@ function fetch_products(){
             $query->the_post();
             $product_id = get_the_ID();
             $thumbnail_id = get_post_thumbnail_id($product_id);
-            $categories = getCategoriesSlug($product_id);
+            //$categories = getCategoriesSlug($product_id);
             echo $categories;
             // Retrieve and store relevant product data
             $product_data = array(
                 'ID' => $product_id,
                 'title' => get_the_title(),
-                'categories' => $categories,
+                //'categories' => $categories,
                 'location' => get_post_meta($product_id, 'comunidad_nombre', true),
                 'link' => get_the_permalink(),
                 'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
