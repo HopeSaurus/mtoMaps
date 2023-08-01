@@ -50,7 +50,7 @@ function fetch_products(){
             $query->the_post();
             $product_id = get_the_ID();
             $thumbnail_id = get_post_thumbnail_id($product_id);
-            $categories = get_the_terms($product_id, 'product_cat');
+            $categories = getCategoriesSlug($product_id);
             // Retrieve and store relevant product data
             $product_data = array(
                 'ID' => $product_id,
@@ -72,4 +72,13 @@ function fetch_products(){
     die();
 }
 
+
+function getCategoriesSlug($product_id){
+    $categories = get_the_terms($product_id, 'product_cat');
+    $categories_slug = array();
+    foreach($categories as $category){
+        $categories_slug[] = $category->slug;
+    }
+    return $categories_slug;
+}
 ?>
