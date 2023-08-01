@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
     // Array to store the selected categories
     let selectedCategories = [];
-    let products = [];
+    var products = [];
     // Function to perform the Ajax request
     function getProductsByCategories(categoriesToDisplay) {
 
