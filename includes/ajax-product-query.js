@@ -137,11 +137,7 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
 
-        totalClusterGroup = 
-        L.markerClusterGroup({
-            showCoverageOnHover: false,
-        });
-
+        totalClusterGroup.removeLayer(markerCluster);
         hideNoProducts();
 
         products.forEach(function(product){
@@ -167,6 +163,7 @@ jQuery(document).ready(function($) {
             showNoProducts();
         }else{
             markersToAdd.forEach((marker) => addMarkers(marker));
+            totalClusterGroup.addLayer(markerCluster);
         }
         updateBounds();
         reCenterMap();
@@ -202,7 +199,7 @@ jQuery(document).ready(function($) {
                 this.openPopup();
 
             });
-            totalClusterGroup.addLayer(marker);
+            markerCluster.addLayer(marker);
 
         }else{
             console.log(`Ignoring product with the id: ${product.ID}`);
