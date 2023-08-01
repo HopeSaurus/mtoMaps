@@ -67,6 +67,7 @@ jQuery(document).ready(function($) {
                 });
             }
         });
+        console.log('selected categories: ',selectedCategories);
         // Once all the checkboxes are counted, check if some parent category all-checkboxes are empty
 
     }
