@@ -173,7 +173,7 @@ jQuery(document).ready(function($) {
     function addMarkers(products){
 
         let totalClusterGroup = 
-        L.markerClusterGroup({
+        L.markerCluster({
             showCoverageOnHover: false,
         });
 
