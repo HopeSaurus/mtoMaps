@@ -63,7 +63,7 @@ function render_leaflet_map($atts) {
         ).addTo(map);
 
         let marker;
-        let markerCluster = [];
+        var markerCluster = [];
 
         var totalClusterGroup = 
         L.markerClusterGroup({
