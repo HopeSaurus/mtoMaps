@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {
         let matches=[];
         let acc;
 
-        totalClusterGroup.removeLayer(markerCluster);
+        totalClusterGroup.removeLayer(clusterGroupPointer);
         hideNoProducts();
 
         products.forEach(function(product){
@@ -169,6 +169,11 @@ jQuery(document).ready(function($) {
     }
 
     function addMarkers(products){
+
+        let totalClusterGroup = 
+        L.markerClusterGroup({
+            showCoverageOnHover: false,
+        });
 
         products.forEach(function(product){
 
@@ -206,7 +211,8 @@ jQuery(document).ready(function($) {
                 console.log(`Ignoring product with the id: ${product.ID}`);
             }
         });
-        totalClusterGroup.addLayer(markerCluster);
+        clusterGroupPointer = markerCluster;
+        totalClusterGroup.addLayer(clusterGroupPointer);
     }
 
 });
