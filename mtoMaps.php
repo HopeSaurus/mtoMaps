@@ -28,7 +28,7 @@ function render_leaflet_map($atts) {
     ), $atts);
 
     // Generate map HTML
-    $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador.png';
+    $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-negro.png';
     ob_start();
     ?>
     <div id="mtoMap">
@@ -67,9 +67,9 @@ function render_leaflet_map($atts) {
 
         var customIcon = L.icon({
             iconUrl: markerUrl,
-            iconSize: [32, 32], // Customize the size of the icon
-            iconAnchor: [16, 32], // Customize the position of the icon anchor
-            popupAnchor: [0, -32], // Customize the position of the popup relative to the icon
+            iconSize: [32, 64], // Customize the size of the icon
+            iconAnchor: [16, 64], // Customize the position of the icon anchor
+            popupAnchor: [0, -64], // Customize the position of the popup relative to the icon
         });
 
 
