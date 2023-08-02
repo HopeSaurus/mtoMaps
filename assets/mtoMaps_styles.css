@@ -229,7 +229,6 @@ ul.subcategories-list > li > label{
     cursor: pointer;
     color: #000;
     padding: 3px 10px 3px 0;
-    font-family: "Roboto Slab", Sans-serif;
     /* prevent text to be selectable */
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
