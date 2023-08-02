@@ -60,6 +60,12 @@
     justify-content:center;
 }
 
+.leaflet-popup-tip{
+    width: 34px;
+    height: 34px;
+    background-color: #d8d9da;
+}
+
 .leaflet-popup-content-wrapper{
     border-radius: 50px;
     background-color: #d8d9da;
