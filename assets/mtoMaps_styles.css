@@ -61,6 +61,7 @@
 }
 
 .leaflet-popup-content-wrapper{
+    border-radius: 50px;
     background-color: #d8d9da;
 }
 
