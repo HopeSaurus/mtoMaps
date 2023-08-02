@@ -165,7 +165,6 @@ a:link, a:visited{
     flex-direction: column;
     justify-content: flex-start;
     padding: 5px;
-    font-weight: bold;
 }
 
 .activate-menu{
