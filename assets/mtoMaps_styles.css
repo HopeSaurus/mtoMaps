@@ -51,6 +51,7 @@
 }
 
 .map__popup{
+    font-family: "Livvic", sans-serif;
     display:flex; 
     flex-direction:column; 
     width:150px; 
