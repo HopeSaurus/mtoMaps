@@ -175,6 +175,7 @@ jQuery(document).ready(function($) {
         let markerCluster = 
         L.markerClusterGroup({
             showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 1.5,
         });
 
         products.forEach(function(product){
