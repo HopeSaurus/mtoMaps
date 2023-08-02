@@ -63,7 +63,7 @@ function render_leaflet_map($atts) {
         }
         ).addTo(map);
 
-        let markerUrl = <?php echo ''.$marker_img_url.''; ?>;
+        let markerUrl = "<?php echo $marker_img_url;?>";
 
         var customIcon = L.icon({
             iconUrl: markerUrl,
