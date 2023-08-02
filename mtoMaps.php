@@ -72,12 +72,6 @@ function render_leaflet_map($atts) {
             popupAnchor: [0, -32], // Customize the position of the popup relative to the icon
         });
 
-        L.Icon.Default.mergeOptions({
-            iconUrl: customIcon.options.iconUrl,
-            iconSize: customIcon.options.iconSize,
-            iconAnchor: customIcon.options.iconAnchor,
-            popupAnchor: customIcon.options.popupAnchor,
-        });
 
         let marker;
         let totalClusterGroup = L.markerClusterGroup({

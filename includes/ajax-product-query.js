@@ -184,7 +184,7 @@ jQuery(document).ready(function($) {
 
             if(latitude && longitude ){
 
-                marker = L.marker([latitude,longitude]);
+                marker = L.marker([latitude,longitude], { icon: customIcon });
 
                 marker.bindPopup(`<div class="map__popup">
                                     <a class="map__popup-linkarea" href="${product.link}"> 
