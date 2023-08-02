@@ -28,6 +28,7 @@ function render_leaflet_map($atts) {
     ), $atts);
 
     // Generate map HTML
+    $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador.png';
     ob_start();
     ?>
     <div id="mtoMap">
@@ -61,6 +62,22 @@ function render_leaflet_map($atts) {
 
         }
         ).addTo(map);
+
+        let markerUrl = <?php $marker_img_url ?>;
+
+        var customIcon = L.icon({
+            iconUrl: markerUrl,
+            iconSize: [32, 32], // Customize the size of the icon
+            iconAnchor: [16, 32], // Customize the position of the icon anchor
+            popupAnchor: [0, -32], // Customize the position of the popup relative to the icon
+        });
+
+        L.Icon.Default.mergeOptions({
+            iconUrl: customIcon.options.iconUrl,
+            iconSize: customIcon.options.iconSize,
+            iconAnchor: customIcon.options.iconAnchor,
+            popupAnchor: customIcon.options.popupAnchor,
+        });
 
         let marker;
         let totalClusterGroup = L.markerClusterGroup({
