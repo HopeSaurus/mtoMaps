@@ -67,9 +67,9 @@ function render_leaflet_map($atts) {
 
         var customIcon = L.icon({
             iconUrl: markerUrl,
-            iconSize: [32, 32], // Customize the size of the icon
-            iconAnchor: [16, 32], // Customize the position of the icon anchor
-            popupAnchor: [0, -32], // Customize the position of the popup relative to the icon
+            iconSize: [48, 48], // Customize the size of the icon
+            iconAnchor: [24, 48], // Customize the position of the icon anchor
+            popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
         });
 
 
