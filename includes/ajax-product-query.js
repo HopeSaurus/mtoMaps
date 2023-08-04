@@ -180,8 +180,8 @@ jQuery(document).ready(function($) {
 
         products.forEach(function(product){
 
-            let latitude = product.latitude;
-            let longitude = product.longitude;
+            let latitude = product.latitude.replace('\'','');
+            let longitude = product.longitude.replace('\'','');
 
             if(latitude && longitude ){
 
