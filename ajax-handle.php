@@ -62,7 +62,7 @@ function fetch_products(){
                 'categories' => $categories,
                 'location' => get_post_meta($product_id, 'comunidad_nombre', true),
                 'link' => get_the_permalink(),
-                'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'thumbnail')),
+                'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, 'medium')),
                 'latitude' => get_post_meta($product_id, 'latitud', true),
                 'longitude' => get_post_meta($product_id, 'longitud', true)
             );
