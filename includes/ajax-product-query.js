@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
                     }
                     else{
                         products = response.data;
+                        console.log("Products",products);
                         handleCheckboxClick();
                     }  
                 }
