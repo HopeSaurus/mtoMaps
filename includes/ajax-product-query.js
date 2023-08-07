@@ -27,7 +27,6 @@ jQuery(document).ready(function($) {
                     }
                     else{
                         products = response.data;
-                        console.log("Products",products);
                         handleCheckboxClick();
                     }  
                 }
@@ -69,7 +68,6 @@ jQuery(document).ready(function($) {
                 });
             }
         });
-        console.log('selected categories: ',selectedCategories);
 
         filterProducts();
     }
@@ -155,10 +153,9 @@ jQuery(document).ready(function($) {
                 matches.push(acc);
             });
             if(!matches.includes(0)){
-                console.log("marker added",product.ID,product.categories);
                 markersToAdd.push(product);
             }else{
-                console.log("marker not added",product.ID,product.categories);
+                //console.log("marker not added",product.ID,product.categories);
             }
         });
 
