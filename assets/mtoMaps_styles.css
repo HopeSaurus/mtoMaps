@@ -179,6 +179,7 @@ a:link, a:visited{
 
 
 .categories-list__title{
+    font-size: 1.5rem;
     position: relative;
     grid-area: filter;
     display: flex;
