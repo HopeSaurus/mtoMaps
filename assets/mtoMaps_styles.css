@@ -17,6 +17,12 @@
     }
 }
 
+@media only screen and (max-width: 400px) {
+    #mini_map{
+    width: 80vw;
+    }
+}
+
 #mini_map .leaflet-control-attribution.leaflet-control{
     display: none;
 }
