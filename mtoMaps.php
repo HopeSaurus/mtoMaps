@@ -113,7 +113,7 @@ function render_leaflet_map_mini($atts){
     <script>
         let map = L.map('mini_map',{
             minZoom: 4
-        }).setView([23.6345, -102.5528], 5);
+        }).setView([23.6345, -102.5528], 3);
 
         map.zoomControl.remove();
         map.attributionControl.setPrefix('');
