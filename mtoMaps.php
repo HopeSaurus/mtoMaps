@@ -102,44 +102,7 @@ function render_leaflet_map_mini($atts){
     ob_start();
     ?>
         <div id="mini_map"></div>
-    <!-- <script>
-        let map = L.map('mini_map',{
-            minZoom: 4
-        }).setView([0, 0], <?php echo $atts['zoom']; ?>);
-        
-        var bounds = L.latLngBounds([4.532866, -138.453531],[42.718561, -66.647219] );
-        //Setting those coordinates as our boundaries
-        map.setMaxBounds(bounds);
-        //Stop the user from dragging the map out of bounds
-        map.on('drag', function() {
-            map.panInsideBounds(bounds, { animate: false });
-        });
-
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png',{
-
-        }
-        ).addTo(map);
-
-        let markerUrl = "<?php echo $marker_img_url;?>";
-
-        var customIcon = L.icon({
-            iconUrl: markerUrl,
-            iconSize: [48, 48], // Customize the size of the icon
-            iconAnchor: [24, 48], // Customize the position of the icon anchor
-            popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
-        });
-
-
-        let query;
-        query = <?php echo fetch_products(); ?>;
-        
-        let marker = L.marker([query.latitude,query.longitude], { icon: customIcon });
-
-        console.log(marker);
-
-        map.addLayer(marker);
-
-    </script> -->
+    
 <?php
 return ob_get_clean();
 }
