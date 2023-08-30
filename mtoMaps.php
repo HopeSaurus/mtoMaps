@@ -100,11 +100,9 @@ function render_leaflet_map_mini($atts){
      // Generate map HTML
     $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde.png';
 
-    $product_query = new WP_Query(array(
-        'post_type' => 'product',
-        'posts_per_page' => -1,
-        )
-    );
+    $product_id = $product->get_id();
+    $product_longitude = get_post_meta($product_id, 'longitud', true);
+    $product_latitude = get_post_meta($product_id, 'latitud', true);
     
     ob_start();
     ?>
@@ -140,11 +138,9 @@ function render_leaflet_map_mini($atts){
             popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
         });
 
-        let marker = L.marker([query.latitude,query.longitude], { icon: customIcon });
+        let marker = L.marker([<?php echo $product_latitude; ?>,<?php echo $product_longitude; ?>], { icon: customIcon }).addTo(map);
 
-        console.log(marker);
-
-        map.addLayer(marker);
+        map.setView(marker.getLatLng(), 15);
 
     </script>
     
