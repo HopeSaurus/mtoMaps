@@ -6,10 +6,16 @@
 }
 
 #mini_map{
+    display: flex;
     height: 200px;
-    width: 100%;
     border-radius: 10px;
 }
+
+#mini_map > *{
+    flex: 1;
+}
+
+
 
 #mini_map .leaflet-control-attribution.leaflet-control{
     display: none;
