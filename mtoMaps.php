@@ -113,7 +113,7 @@ function render_leaflet_map_mini($atts){
     <script>
         let map = L.map('mini_map',{
             minZoom: 4
-        }).setView([0, 0], <?php echo $atts['zoom']; ?>);
+        })setView([23.6345, -102.5528], 5);
 
         map.zoomControl.remove();
         map.attributionControl.setPrefix('');
@@ -141,8 +141,6 @@ function render_leaflet_map_mini($atts){
         });
 
         let marker = L.marker([<?php echo $product_latitude; ?>,<?php echo $product_longitude; ?>], { icon: customIcon }).addTo(map);
-
-        map.setView(marker.getLatLng(), 15);
 
     </script>
     
