@@ -155,13 +155,11 @@ add_shortcode('leaflet_map_mini', 'render_leaflet_map_mini');
 
 
 function enqueue_leaflet_map_assets() {
-    if (has_shortcode(get_post()->post_content, 'leaflet_map') || has_shortcode(get_post()->post_content, 'leaflet_map_mini' )) {
         wp_enqueue_script('leaflet_js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', Array(), '1.9.3', null);
         wp_enqueue_style('leaflet_css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', Array(), '1.9.3', null);
         wp_enqueue_script('leaflet_markercluster_js','https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', Array(),'1.4.1',null);
         wp_enqueue_style('leaflet_markercluster_css','https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css', Array(), '1.4.1', null);
         wp_enqueue_style('leaflet_markerclusterdefault_css','https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css', Array(), '1.4.1', null);
-    }
 }
 
 function enqueue_custom_mtoMaps_assets(){
