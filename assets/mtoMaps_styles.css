@@ -5,6 +5,11 @@
 --map-height: 65vh;
 }
 
+#mini_map{
+    height: 100%;
+    border-radius: 10px;
+}
+
 #mtoMap{
     font-family: "Livvic", sans-serif;
     color: #000;
