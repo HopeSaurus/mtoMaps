@@ -102,7 +102,7 @@ function render_leaflet_map_mini($atts){
 
     global $product;
 
-    $product_id = $product->get_id();
+    //$product_id = $product->get_id();
     $product_longitude = get_post_meta($product_id, 'longitud', true);
     $product_latitude = get_post_meta($product_id, 'latitud', true);
     
