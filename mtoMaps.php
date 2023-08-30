@@ -100,7 +100,11 @@ function render_leaflet_map_mini($atts){
      // Generate map HTML
     $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde.png';
 
-    $product_query = fetch_products();
+    $product_query = new WP_Query(array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        )
+    );
     
     ob_start();
     ?>
