@@ -99,13 +99,12 @@ function render_leaflet_map_mini($atts){
 
      // Generate map HTML
     $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde.png';
-    if (!is_elementor_editor()) {
-        global $product;
 
-        $product_id = $product->get_id();
-        $product_longitude = get_post_meta($product_id, 'longitud', true);
-        $product_latitude = get_post_meta($product_id, 'latitud', true);
-    }
+    global $product;
+
+    $product_id = $product->get_id();
+    $product_longitude = get_post_meta($product_id, 'longitud', true);
+    $product_latitude = get_post_meta($product_id, 'latitud', true);
 
     ob_start();
     ?>
