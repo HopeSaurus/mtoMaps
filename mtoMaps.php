@@ -155,7 +155,7 @@ add_shortcode('leaflet_map_mini', 'render_leaflet_map_mini');
 
 
 function enqueue_leaflet_map_assets() {
-    if (is_page() && has_shortcode(get_post()->post_content, 'leaflet_map') || has_shortcode(get_post()->post_content, 'leaflet_map_mini' )) {
+    if (has_shortcode(get_post()->post_content, 'leaflet_map') || has_shortcode(get_post()->post_content, 'leaflet_map_mini' )) {
         wp_enqueue_script('leaflet_js', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', Array(), '1.9.3', null);
         wp_enqueue_style('leaflet_css', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css', Array(), '1.9.3', null);
         wp_enqueue_script('leaflet_markercluster_js','https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js', Array(),'1.4.1',null);
@@ -165,7 +165,7 @@ function enqueue_leaflet_map_assets() {
 }
 
 function enqueue_custom_mtoMaps_assets(){
-    if (is_page() && has_shortcode(get_post()->post_content, 'leaflet_map') || has_shortcode(get_post()->post_content, 'leaflet_map_mini' )) {
+    if (has_shortcode(get_post()->post_content, 'leaflet_map') || has_shortcode(get_post()->post_content, 'leaflet_map_mini' )) {
         $styles_dir = plugin_dir_url(__FILE__) . "assets/mtoMaps_styles.css";
         wp_enqueue_style('mtoMaps_css', $styles_dir, Array(), null, null);
     }
