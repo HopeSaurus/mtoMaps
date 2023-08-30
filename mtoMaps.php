@@ -148,7 +148,7 @@ function render_leaflet_map_mini($atts){
 return ob_get_clean();
 }
 
-add_shortcode('leaflet_map_mini', 'render_leaflet_map_mini');
+//add_shortcode('leaflet_map_mini', 'render_leaflet_map_mini');
 
 
 function enqueue_leaflet_map_assets() {
