@@ -133,19 +133,7 @@ function render_leaflet_map_mini($atts){
 
 
         let query;
-        query =
-        <?php 
-            $query_args = array(
-                'post_type' => 'product',
-                'posts_per_page' => -1,
-            ); 
-
-            $query = new WP_Query($query_args);
-
-            echo $query;
-            
-        ?>
-        ;
+        query = <?php echo fetch_products(); ?>;
         
         let marker = L.marker([query.latitude,query.longitude], { icon: customIcon });
 
