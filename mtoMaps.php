@@ -101,8 +101,8 @@ function render_leaflet_map_mini($atts){
     $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde.png';
     ob_start();
     ?>
-        <div id="mini_map"> </div>
-    <script>
+        <div id="mini_map"></div>
+    <!-- <script>
         let map = L.map('mini_map',{
             minZoom: 4
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
@@ -139,7 +139,7 @@ function render_leaflet_map_mini($atts){
 
         map.addLayer(marker);
 
-    </script>
+    </script> -->
 <?php
 return ob_get_clean();
 }
