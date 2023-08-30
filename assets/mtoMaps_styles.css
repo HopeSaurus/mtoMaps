@@ -13,7 +13,7 @@
 
 @media only screen and (max-width: 1024px) {
     #mini_map{
-    width: min(40vw,200px);
+    width: 40vw;
     }
 }
 
