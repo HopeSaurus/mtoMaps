@@ -8,12 +8,12 @@
 #mini_map{
     display: flex;
     height: 200px;
+    width: 100%;
     border-radius: 10px;
 }
 
 @media only screen and (max-width: 1024px) {
     #mini_map{
-        width: 334.5px;
     }
 }
 
