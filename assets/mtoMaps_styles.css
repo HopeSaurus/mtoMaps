@@ -6,8 +6,12 @@
 }
 
 #mini_map{
-    height: 100%;
+    height: 200px;
     border-radius: 10px;
+}
+
+#mini_map .leaflet-control-attribution.leaflet-control{
+    display: none;
 }
 
 #mtoMap{

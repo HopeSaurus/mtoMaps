@@ -114,6 +114,9 @@ function render_leaflet_map_mini($atts){
         let map = L.map('mini_map',{
             minZoom: 4
         }).setView([0, 0], <?php echo $atts['zoom']; ?>);
+
+        map.zoomControl.remove();
+        map.attributionControl.setPrefix('');
         
         var bounds = L.latLngBounds([4.532866, -138.453531],[42.718561, -66.647219] );
         //Setting those coordinates as our boundaries
@@ -137,8 +140,6 @@ function render_leaflet_map_mini($atts){
             popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
         });
 
-        
-        
         let marker = L.marker([query.latitude,query.longitude], { icon: customIcon });
 
         console.log(marker);
