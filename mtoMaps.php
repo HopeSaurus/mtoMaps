@@ -137,7 +137,7 @@ function render_leaflet_map_mini($atts){
             popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
         });
 
-        let query = <?php echo $product_query; ?>;
+        
         
         let marker = L.marker([query.latitude,query.longitude], { icon: customIcon });
 
