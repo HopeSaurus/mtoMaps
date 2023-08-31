@@ -142,7 +142,18 @@ function render_leaflet_map_mini($atts){
             popupAnchor: [0, -48], // Customize the position of the popup relative to the icon
         });
 
-        let marker = L.marker([<?php echo $product_latitude; ?>,<?php echo $product_longitude; ?>], { icon: customIcon }).addTo(map);
+        let marker = L.marker([<?php echo $product_latitude; ?>,<?php echo $product_longitude; ?>], { icon: customIcon })
+        .on('click', function(e) {
+            let markerCoords = this.getLatLng();
+            let currentZoom = map.getZoom();
+
+            if(currentZoom>=17){
+                map.flyTo([markerCoords.lat ,markerCoords.lng], currentZoom, {duration: 0.5});
+            }else{
+                map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
+            }
+        });
+        .addTo(map);
 
     </script>
     
