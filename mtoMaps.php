@@ -28,7 +28,7 @@ function render_leaflet_map($atts) {
     ), $atts);
 
     // Generate map HTML
-    $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde.png';
+    $marker_img_url = plugins_url('/',__FILE__) . '/assets/marcador-verde-outlined.png';
     ob_start();
     ?>
     <div id="mtoMap">
