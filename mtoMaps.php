@@ -152,8 +152,7 @@ function render_leaflet_map_mini($atts){
             }else{
                 map.flyTo([markerCoords.lat ,markerCoords.lng], 17,{animate: false});
             }
-        });
-        .addTo(map);
+        }).addTo(map);
 
     </script>
     
