@@ -77,7 +77,7 @@ function render_leaflet_map($atts) {
         let totalClusterGroup = L.markerClusterGroup({
             showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 0.5,
-            disableClusteringAtZoom: 10,
+            disableClusteringAtZoom: 14,
         });
 
         var clusterGroupPointer;
