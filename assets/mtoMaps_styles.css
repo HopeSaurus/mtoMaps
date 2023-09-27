@@ -90,7 +90,7 @@ img.leaflet-tile, img.leaflet-marker-icon, img.leaflet-marker-shadow {
     justify-content:center;
 }
 
-.leaflet-popup-close-button{
+.leaflet-popup-close-button > span{
     top: 10;
     right: 10;
     font-size: 1.5rem;
