@@ -91,10 +91,15 @@ img.leaflet-tile, img.leaflet-marker-icon, img.leaflet-marker-shadow {
 }
 
 .leaflet-popup-close-button > span{
-    top: 10;
-    right: 10;
+    top: 10px;
+    right: 10px;
     font-size: 1.5rem;
     color: #C23B33;
+    transition: 0.3s;
+}
+
+.leaflet-popup-close-button > span:hover{
+    color: #000;
 }
 
 .leaflet-popup-tip{
