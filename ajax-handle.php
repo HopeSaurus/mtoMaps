@@ -64,7 +64,8 @@ function fetch_products(){
                 'link' => get_the_permalink(),
                 'thumbnail_url' => addslashes(wp_get_attachment_image_url($thumbnail_id, [300,300])),
                 'latitude' => get_post_meta($product_id, 'latitud', true),
-                'longitude' => get_post_meta($product_id, 'longitud', true)
+                'longitude' => get_post_meta($product_id, 'longitud', true),
+                'stock' => get_post_meta($product_id, '_stock_status', true),
             );
             $products[] = $product_data;
         }
