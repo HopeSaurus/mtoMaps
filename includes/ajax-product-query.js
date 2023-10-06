@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 
     function reCenterMap(){
         map.fitBounds(clusterBounds, {
-            padding: [50,50],
+            padding: [100,100],
             maxZoom: 10
         });
     }
@@ -155,8 +155,6 @@ jQuery(document).ready(function($) {
             });
             if(!matches.includes(0)){
                 markersToAdd.push(product);
-            }else{
-                //console.log("marker not added",product.ID,product.categories);
             }
         });
 

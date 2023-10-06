@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
   function centerMap(){
     if(clusterBounds){
       map.fitBounds(clusterBounds, {
-        padding: [50,50],
+        padding: [100,100],
         maxZoom: 10
     });
     }
