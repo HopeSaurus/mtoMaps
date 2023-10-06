@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
     function reCenterMap(){
         map.fitBounds(clusterBounds, {
             padding: [50,50],
-            maxZoom: 15
+            maxZoom: 10
         });
     }
 

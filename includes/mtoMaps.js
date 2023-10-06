@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
     if(clusterBounds){
       map.fitBounds(clusterBounds, {
         padding: [50,50],
-        maxZoom: 15
+        maxZoom: 10
     });
     }
   }
