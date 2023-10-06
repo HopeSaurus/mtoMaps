@@ -154,6 +154,23 @@ img.leaflet-tile, img.leaflet-marker-icon, img.leaflet-marker-shadow {
     height:auto;
 }
 
+.out-of-stock-label {
+    text-align: center;
+    border-radius: 3px;
+    background-color: #C23B33;
+    color: white;
+    position: absolute;
+    font-family: "Livvic", sans-serif!important;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: uppercase;
+    width: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 1;
+}
+
 @media only screen and (min-width: 675px) {
     #map .map__popup img{
         width:150px;

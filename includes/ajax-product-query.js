@@ -185,15 +185,27 @@ jQuery(document).ready(function($) {
 
                 marker = L.marker([latitude,longitude], { icon: customIcon });
 
-                marker.bindPopup(`<div class="map__popup">
+                if(product.stock === 'instock'){
+                    marker.bindPopup(`<div class="map__popup">
+                                        <a class="map__popup-linkarea" href="${product.link}"> 
+                                            <img src="${product.thumbnail_url}" alt="${product.title}"></img>
+                                            <div class="map__popup-title">${product.title}</div>
+                                            <div class="map__popup-subtitle">${product.location}</div>
+                                        </a> 
+                                    </div>
+                                    `);
+                }else{
+                    marker.bindPopup(`<div class="map__popup">
                                     <a class="map__popup-linkarea" href="${product.link}"> 
-                                        <img src="${product.thumbnail_url}" alt="${product.title}"></img>
+                                        <img src="${product.thumbnail_url}" alt="${product.title}">
+                                            <span class="out-of-stock-label">Vendido</span>
+                                        </img>
                                         <div class="map__popup-title">${product.title}</div>
                                         <div class="map__popup-subtitle">${product.location}</div>
                                     </a> 
                                 </div>
                                 `);
-
+                }
                 marker.on('click', function(e) {
                     let markerCoords = this.getLatLng();
                     let currentZoom = map.getZoom();
