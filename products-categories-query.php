@@ -51,6 +51,7 @@ function get_parent_categories(){
         'taxonomy' => 'product_cat',
         'parent' => 0, // Set to 0 to get only top-level parent categories
         'hide_empty' => 1, // Set to 1 to exclude parent categories with no products assigned
+        'slug' => array('comunidad','textil'),
     );
 
     $parent_categories = get_terms($args);
